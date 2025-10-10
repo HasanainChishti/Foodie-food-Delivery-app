@@ -1,16 +1,21 @@
 import React from 'react'
 import SearchBar from './SearchBar';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { TfiSearch } from "react-icons/tfi";
 import { BsCart4 } from "react-icons/bs";
 import { MdLogin } from "react-icons/md";
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 const Header = () => {
       const logo = ["F", "o", "o", "d", "i", "e"];
+        const [ProfileDetail, setProfileDetail] = useState(0);
        const [search, setSearch] = useState("");
          const userData = useSelector((state) => state.authSlice.userData);
            const [select, setSelect] = useState(0);
+            const cnt = useSelector((state) => state.cartSlice.items);
+            // console.log(cnt,"is here");
+            
   return (
    <>
      <nav className="w-full bg-orange-600 sm:w-full md:w-full  lg:w-full  py-8  sticky top-0 shadow-md z-50 ">
@@ -43,7 +48,8 @@ const Header = () => {
 
               <Link to="/CartPage">
                 <button className="flex items-center gap-1 text-2xl font-semibold hover:text-orange-900 transition">
-                  <BsCart4 className="text-3xl" /> Cart
+                  <BsCart4 className="text-3xl" /> 
+                  Cart{cnt?<span>({cnt.length})</span>:null}
                 </button>
               </Link>
 
@@ -60,7 +66,7 @@ const Header = () => {
                     onClick={() => setProfileDetail(!ProfileDetail)}
                   >
                     <img
-                      src={assets}
+                      src={""}
                       alt="profile"
                       className="object-cover h-[50px] w-[50px] rounded-full"
                     />

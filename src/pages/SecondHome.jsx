@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router";
-import { Link } from "react-router";
+import { Link } from 'react-router-dom';
+
 import { cartContext } from "../components/ContextApi";
 import SearchBar from "../components/SearchBar";
 import { useState } from "react";
@@ -11,7 +12,7 @@ import { removeUser } from "../Stored/authSlicer";
 import Hero from "../components/Hero";
 import Header from "../components/Header"
 const SecondHome = () => {
-  const counter = useSelector((state) => state.cartSlice.items);
+  const cnt = useSelector((state) => state.cartSlice.items);
   const data = useSelector((state) => state.authSlice.userData);
   // console.log(counter,"is cnt");
   const dispatch = useDispatch();
