@@ -49,12 +49,14 @@ console.log('lat',lat, 'lng',lng);
   }
   return (
     <>
-    <div className="w-[70%] mx-auto flex flex-col md:flex items-center align-middle mt-10 text-2xl font-bold ">
-      <input type="text" placeholder="Enter dish name" className=" flex bg-white border-b-1 p-3  "
+    <div className="w-[420px]  gap-0 mx-auto flex flex-col   md:flex-row items-center align-middle mt-10 shadow-md
+      text-2xl font-bold ">
+    
+    <input type="text" placeholder="Enter dish name" className=" flex w-[350px] bg-gray-100  p-3  "
        onChange={(e)=>(setInput(e.target.value))}
         value={input}
        /> 
-       <button onClick={()=>searchDish(input)} >Search</button>
+       <button onClick={()=>searchDish(input)} className="bg-green-400 p-3 rounded-2xl">Search</button>
     </div>
    
      

@@ -115,13 +115,13 @@ const SearchDishInfo = ({item}) => {
                 {/* <span className="w-22 h-auto bg-green-600  text-2xl font-bold text-center rounded-xl p-2 mt-10">Add</span> */}
                 {/* <p className="overflow-hidden font-normal ">{item?.card?.card?.info?.description}</p> */}
               </div>
-              <div className='w-[200px] h-[200px]'>
+              <div className='w-[240px] h-[200px]'>
                 <img
                   src={
                     "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/" +
                     item?.card?.card?.info?.imageId
                   }
-                  className=" mt-10 rounded-xl p-2 "
+                  className="object-cover mt-10 rounded-xl p-2 "
                 />
 
               </div>
