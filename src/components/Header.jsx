@@ -39,24 +39,29 @@ const Header = () => {
             </div>
 
             {/* Desktop Buttons */}
-            <div className="hidden sm:flex items-center sm:gap-4 md:gap-7 lg:gap-10 text-white font-bold">
-              <Link to={`/Search/${search || "Biryani"}`}>
-                <p className="text-2xl font-semibold flex items-center gap-1 hover:text-orange-900 transition">
-                  <TfiSearch className="text-2xl" /> Search
+            <div className="hidden sm:flex items-center sm:gap-4 md:gap-7 lg:gap-10 text-white   font-bold">
+               <Link to={`/`}>
+                <p className="text-2xl font-semibold flex items-center gap-1 hover:text-black transition">
+                  Home
                 </p>
               </Link>
-
+              <Link to={`/Search/${search || "Biryani"}`}>
+                <p className="text-2xl font-semibold flex items-center gap-1 hover:text-black transition">
+                  <TfiSearch className="text-xl" /> Search
+                </p>
+              </Link>
+{/* https://cors-by-codethread-for-swiggy.vercel.app/cors/ */}
               <Link to="/CartPage">
-                <button className="flex items-center gap-1 text-2xl font-semibold hover:text-orange-900 transition">
-                  <BsCart4 className="text-3xl" /> 
+                <button className="flex items-center gap-1 text-2xl font-semibold hover:text-black transition">
+                  <BsCart4 className="text-2xl" /> 
                   Cart{cnt?<span>({cnt.length})</span>:null}
                 </button>
               </Link>
 
               {!userData ? (
                 <Link to="/LogIn">
-                  <button className="flex justify-center align-middle items-center gap-1 text-2xl font-semibold hover:bg-orange-900 transition px-3 py-1 rounded-lg">
-                    <MdLogin className="text-3xl" /> Login
+                  <button className="flex justify-center align-middle items-center gap-1 text-2xl font-semibold hover:text-black transition px-3 py-1 rounded-lg">
+                    <MdLogin className="text-2xl" /> Login
                   </button>
                 </Link>
               ) : (
