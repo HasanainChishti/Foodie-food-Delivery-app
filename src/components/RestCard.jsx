@@ -7,7 +7,7 @@ export default function  RestCard({ restInfo }) {
   return (
     <Link to={"/city/delhi/"+restInfo.info.id} state={{restInfo}}>
       {/* transition duration-50 hover:scale-120  */}
-    <div className="w-[300px] h-[350px]  transform  p-4   rounded-2xl outline-0 shadow-2xl gap-2 transition-300 card transition-transform hover:-translate-y-3">
+    <div className="max-w-[300px] max-h-[350px]  transform  py-4  rounded-2xl outline-0 shadow-2xl gap-2 transition-300 card transition-transform hover:-translate-y-3">
     <img
       className="w-[350px] h-[170px] object-cover rounded-xl"
       src={

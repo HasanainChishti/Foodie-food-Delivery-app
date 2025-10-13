@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 const Hero = () => {
   return (
-    <section className="relative bg-orange-100 w-full">
+    <section className="relative bg-orange-100 max-w-[85%] mx-auto mt-10 rounded-xl">
       <div className=" hidden relative z-10 max-w-7xl mx-auto px-6 py-24 md:flex  md:flex-row items-center">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
