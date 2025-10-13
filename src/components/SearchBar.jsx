@@ -23,7 +23,7 @@ const SearchBar = () => {
     dispatch(setT(1))
     console.log("value lenth is", value.length);
     const res = await fetch(
-      `https://www.swiggy.com/dapi/misc/place-autocomplete?input=${l}`
+      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/misc/place-autocomplete?input=${l}`
     );
     const data = await res.json();
     console.log("nedde data", data);
@@ -36,7 +36,7 @@ const SearchBar = () => {
     if (id == "") return;
   dispatch(setF())
     const res = await fetch(
-      `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${id}`
+      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/misc/address-recommend?place_id=${id}`
     );
     const data = await res.json();
     setLat(data.data[0].geometry.location.lat);
