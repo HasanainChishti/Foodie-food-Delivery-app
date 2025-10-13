@@ -17,7 +17,7 @@ export default function  RestCard({ restInfo }) {
 
       </img>
        <div className="w-[95%] mx-auto mt-3 overflow-hidden">
-       <div className=" font-semibold text-2xl overflow-hidden text-ellipsis">{restInfo?.info?.name.length > 15? restInfo?.info?.name.slice(0,18)+"...":restInfo?.info?.name}</div>
+       <div className=" font-semibold text-2xl overflow-hidden ">{restInfo?.info?.name.length > 15? restInfo?.info?.name.slice(0,18)+"...":restInfo?.info?.name}</div>
        <div className="flex gap-2  items-center mx-auto">
        <div className="text-xl text-gray-600 font-semibold">{restInfo?.info?.avgRating}</div>
        <div className="text-xl  font-semibold">{restInfo?.info?.sla?.slaString}</div>

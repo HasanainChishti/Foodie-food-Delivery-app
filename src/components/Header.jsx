@@ -18,7 +18,7 @@ const Header = () => {
             
   return (
    <>
-     <nav className="w-full bg-orange-600 sm:w-full md:w-full  lg:w-full  py-8  sticky top-0 shadow-md z-50 ">
+     <nav className="w-full bg-orange-600 sm:w-full md:w-full  lg:w-full  max-py-8  sticky top-0 shadow-md z-50 ">
         
         <div className="w-full px-4 sm:px-4 md:px-8">
           <div className=" flex justify-between items-center  lg:flex lg:justify-evenly">
