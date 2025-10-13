@@ -60,7 +60,7 @@ console.log('lat',lat, 'lng',lng);
     </div>
    
      
-      <div className=" w-[90%] flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
+      <div className="w-[90%] flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
 
         
         <div className=" flex flex-wrap gap-8  mx-auto justify-center pt-30 ">

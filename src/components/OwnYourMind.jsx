@@ -9,7 +9,7 @@ const OwnYourMind = ({onMindData}) => {
   <div className="w-[80%] container  mx-auto  mb-20">
     <h1 className="text-3xl font-bold m-4">Whats on your mind ?</h1>
     
-      <div className="flex flex-wrap overflow-hidden   md:flex-nowrap overflow-x-scroll  gap-15">
+      <div className="flex flex-row overflow-scroll   md:flex-nowrap  gap-15">
         {
         
         data1?.map((item,index) => (

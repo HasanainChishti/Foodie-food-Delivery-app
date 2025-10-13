@@ -67,21 +67,22 @@ export default function Restaurant({ RestData, onMindData }) {
         </div>
 
         {/* Cards */}
-        <div className="flex flex-wrap justify-center gap-8 mt-10 w-[95%]">
+        {/* flex flex-wrap justify-center */}
+        <div className=" grid grid-cols-4 gap-6 mt-10 w-[95%]">
           {RestData?.map((restInfo) => (
             <RestCard key={restInfo?.info?.id} restInfo={restInfo} />
           ))}
         </div>
       </div>
-      <footer className=" md:w-[90%]  mx-auto rounded-xl md:flex flex-col h-240 sm:240 sm:flex-col md:h-100 mb-10 bg-gray-200">
+      <footer className=" md:w-[90%]  mx-auto rounded-xl md:flex flex-col h-240 sm:240 sm:flex-col md:h-100 mb-10 mt-15 bg-gray-200">
       <div className=" flex flex-col gap-2 md:flex-row justify-evenly p-2 mt-5 items-center">
                    <div className="flex flex-col gap-4">
                     <h1 className="text-orange-600 text-4xl font-semibold">🍴Foodie</h1>
                     <p className="text-gray-700 text-2xl font-semibold">Delicious food & groceries delivered to your doorstep.</p>
-                    <p className="text-gray-700 text-2xl font-semibold">Download the App Now</p>
+                    <p className="text-gray-700 text-2xl font-semibold text-center">Download the App Now</p>
                     <div className="flex justify-evenly ">
-                      <button className="text-gray-900 text-2xl font-semibold border-1">Play Store</button>
-                      <button className="text-gray-900 text-2xl font-semibold border-1">Android Store</button>
+                      <button className="text-gray-900 text-2xl font-semibold border-2 p-2">Play Store</button>
+                      <button className="text-gray-900 text-2xl font-semibold border-2 p-2">Android Store</button>
                     </div>
                    </div>
                    <div className="flex flex-col text-xl text-gray-900 gap-2">
