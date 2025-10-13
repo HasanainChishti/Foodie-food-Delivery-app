@@ -71,14 +71,14 @@ export default function RestaurantMenu() {
           </div>
              {/* </div> */}
                {/* search */}
-          <div className="w-[60%] mt-20 mx-auto flex flex-col  gap-5">
-            {/* <h1 className="Font-bold text-2xl text-center">Menu</h1> */}
+          {/* <div className="w-[60%] mt-20 mx-auto flex flex-col  gap-5">
+           
             <Link to={`/city/delhi/Search`}>
            <input type="text" placeholder={`Search For Dishes in ${restInfo.info.name}`}
             className="border-1 w-full py-2   text-center font-bold
              text-2xl rounded-2xl"></input>
             </Link>
-          </div>
+          </div> */}
           
       <div className="w-[60%] mt-10  mx-auto">
         <button
