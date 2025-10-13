@@ -7,7 +7,7 @@ export default function  RestCard({ restInfo }) {
   return (
     <Link to={"/city/delhi/"+restInfo.info.id} state={{restInfo}}>
       {/* transition duration-50 hover:scale-120  */}
-    <div className="max-w-[300px] max-h-[400px]  transform  py-4  rounded-2xl outline-0 shadow-2xl gap-2 transition-300 card transition-transform hover:-translate-y-3">
+    <div className="max-w-[300px] max-h-[400px]  transform  py-4 px-2 rounded-2xl outline-0 shadow-2xl gap-2 transition-300 card transition-transform hover:-translate-y-3">
     <img
       className="w-[350px] h-[170px] object-cover rounded-xl"
       src={
@@ -17,7 +17,7 @@ export default function  RestCard({ restInfo }) {
 
       </img>
        <div className="w-[95%] mx-auto mt-3 overflow-hidden">
-       <div className=" font-semibold text-2xl overflow-hidden ">{restInfo?.info?.name.length > 15? restInfo?.info?.name.slice(0,18)+"...":restInfo?.info?.name}</div>
+       <p className=" font-semibold text-2xl overflow-hidden">{restInfo?.info?.name.length > 15? restInfo?.info?.name.slice(0,15)+"...":restInfo?.info?.name}</p>
        <div className="flex gap-2  items-center mx-auto">
        <div className="text-xl text-gray-600 font-semibold">{restInfo?.info?.avgRating}</div>
        <div className="text-xl  font-semibold">{restInfo?.info?.sla?.slaString}</div>
