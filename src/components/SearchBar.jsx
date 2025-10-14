@@ -18,7 +18,7 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(JSON.parse(localStorage.getItem('location'))||"" );
  
-  async function searchRes(l) {
+  async function seagitrchRes(l) {
     setValue(l);
     dispatch(setT(1))
     console.log("value lenth is", value.length);
