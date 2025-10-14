@@ -36,7 +36,7 @@ const App = () => {
       try {
         //  setStatus("...loading");
         const res = await fetch(
-          `https://cors-by-codethread-for-swiggy.vercel.app/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+          `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
         );
         const data = await res.json();
         console.log("all data", data);

@@ -25,10 +25,17 @@ export default function RestaurantMenu() {
 
   useEffect(() => {
     async function fetchData() {
-      const swiggyAPI = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`;
+      // const swiggyAPI = `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`;
 
-      const response = await fetch(swiggyAPI);
-      const data = await response.json();
+      // const response = await fetch(swiggyAPI);
+      // const data = await response.json();
+
+      try {
+    const res = await fetch(
+      `/api/menuProxy?lat=${s}&lng=${o}&restaurantId=${r}`
+     
+    );
+     let data=await res.json();
 
       const tempData =
         data?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -39,6 +46,10 @@ export default function RestaurantMenu() {
       );
       setRestData(filterData);
     }
+    catch{
+      console.error("❌ Error fetching menu:", err);
+    }
+  }
     fetchData();
   }, []);
 
