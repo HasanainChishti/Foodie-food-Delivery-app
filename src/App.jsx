@@ -22,9 +22,9 @@ const App = () => {
   // // const [status, setStatus] = useState(0);
   // const [cartData, setCartData] = useState([]);
 
-  console.log("lat is", lat);
-  console.log("lng is", lng);
-  // function get_data_from_local_storage() {
+  // console.log("lat is", lat);
+  // console.log("lng is", lng);
+  // function get_data_fr/om_local_storage() {
   //   let data = JSON.parse(localStorage.getItem("cartData")) || [];
   //   setCartData(data);
   // }

@@ -10,8 +10,8 @@ export default defineConfig({
     tailwindcss(),
     
 ],
-  // server: {
-  //   port: 3000, // change this to your desired port
-  //   host: '0.0.0.0', // or 'localhost' if you prefer
-  // },
+  server: {
+    port: 3000, // change this to your desired port
+    host: '0.0.0.0', // or 'localhost' if you prefer
+  },
 })

@@ -6,11 +6,13 @@ import { latContext } from "./ContextApi";
 import { lngContext } from "./ContextApi";
 
 export default function RestaurantMenu() {
-  let {Restid} = useParams();
+  let {id}= useParams();
+  // console.log(""Restid);
+  
   let location=useLocation();
    let {restInfo}=location.state||{};
   console.log("usePdata",restInfo);
-  console.log("restid",Restid);
+  // console.log("restid",Restid);
   
   // // const [selected, setSelected] = useState(null);
    let {lat}=useContext(latContext);
@@ -22,27 +24,26 @@ export default function RestaurantMenu() {
   const [RestData, setRestData] = useState([]);
   const [selected, setSelected] = useState(null);
 
-
   useEffect(() => {
-    async function fetchData() {
-
-      const swiggyAPI
-       = `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}lng=${lng}&restaurantId=${Restid}&catalog_qa=undefined&submitAction=ENTER`;
+  async function fetchData() {
+    
+      const swiggyAPI = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`;
+      // https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER
       const response = await fetch(swiggyAPI);
-      const data = await response?.json();
-   
+      const data = await response.json();
+
       const tempData =
         data?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-      console.log("tempdata",tempData);
+      console.log(tempData);
 
       const filterData = tempData.filter(
         (items) => "title" in items?.card?.card
       );
       setRestData(filterData);
     }
-
     fetchData();
   }, []);
+
   console.log("ApnaRestData",RestData);
   // localStorage.setItem('restId',JSON.parse(RestData.id))
 
