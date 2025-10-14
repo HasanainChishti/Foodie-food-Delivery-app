@@ -26,7 +26,8 @@ export default function RestaurantMenu() {
   useEffect(() => {
     async function fetchData() {
 
-      const swiggyAPI = `https://www.swiggy.com/dapi/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${restInfo.info.id}`;
+      const swiggyAPI
+       = `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}lng=${lng}&restaurantId=${Restid}&catalog_qa=undefined&submitAction=ENTER`;
       const response = await fetch(swiggyAPI);
       const data = await response?.json();
    
