@@ -1,5 +1,5 @@
 {
-  "version": 2,
+
   "builds": [
     { "src": "vite.config.*", "use": "@vercel/static-build" },
     { "src": "api/**/*.js", "use": "@vercel/node" }
