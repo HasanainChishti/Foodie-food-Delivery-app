@@ -25,7 +25,7 @@ export default function RestaurantMenu() {
 
   useEffect(() => {
     async function fetchData() {
-      const swiggyAPI = `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`;
+      const swiggyAPI = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`;
 
       const response = await fetch(swiggyAPI);
       const data = await response.json();
