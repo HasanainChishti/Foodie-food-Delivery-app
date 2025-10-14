@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
-import Restaurant from "./pages/Home";
-import RestaurantMenu from "./components/RestaurantsMenu";
-import RestItemSearch from "./components/RestItemSearch";
-import SearchDish from "./components/SearchDish";
-import SecondHome from "./pages/SecondHome";
-import store from "./Stored/Store";
-import Hero from "./components/Hero";
+import Restaurant from "./Home";
+import RestaurantMenu from "../components/RestaurantsMenu";
+import RestItemSearch from "../components/RestItemSearch";
+import SearchDish from "../components/SearchDish";
+import SecondHome from "./SecondHome";
+import store from "../Stored/Store";
+import Hero from "../components/Hero";
 import { Provider } from "react-redux";
-import CartPage from "./pages/CartPage";
-import LogIn from "./components/LogIn"
-import { latContext } from "./components/ContextApi";
-import { lngContext } from "./components/ContextApi";
+import CartPage from "./CartPage";
+import LogIn from "../components/LogIn";
+import { latContext } from "../components/ContextApi";
+import { lngContext } from "../components/ContextApi";
 import { TfiSearch } from "react-icons/tfi";
 const App = () => {
   const [RestData, setRestData] = useState([]);
@@ -68,9 +68,7 @@ const App = () => {
       }
     }
     fetchData();
-
   }, [lat, lng]);
-
 
   return (
     <>
@@ -80,24 +78,40 @@ const App = () => {
         <lngContext.Provider value={{ lng, setLng }}>
           <latContext.Provider value={{ lat, setLat }}>
             <Routes>
-             
               {/* <Route path="/" element={ <Home RestData={RestData} onMindData={onMindData}></Home> }></Route> */}
-           
+
               {/* <Route path="/Grocery/:name" element={<GroceryPage></GroceryPage>}></Route> */}
-            
-             <Route element={<SecondHome />}>
-               <Route  path="/" element={ <Restaurant RestData={RestData} onMindData={onMindData}></Restaurant>} ></Route>
-            
-              {/* <Route element={<SecondHome />}> */}
-                <Route path="/city/delhi/:id" element={<RestaurantMenu></RestaurantMenu>} ></Route>
-              
-                <Route path="/city/delhi/search" element={<RestItemSearch></RestItemSearch>} ></Route>
-              
-                <Route  path="/Search/:name" element={<SearchDish></SearchDish>}></Route>
-              {/* </Route> */}
-             
-              <Route path="/CartPage" element={<CartPage></CartPage>}></Route>
-              <Route path="/LogIn" element={<LogIn></LogIn>}></Route>
+
+              <Route element={<SecondHome />}>
+                <Route
+                  path="/"
+                  element={
+                    <Restaurant
+                      RestData={RestData}
+                      onMindData={onMindData}
+                    ></Restaurant>
+                  }
+                ></Route>
+
+                {/* <Route element={<SecondHome />}> */}
+                <Route
+                  path="/city/delhi/:id"
+                  element={<RestaurantMenu></RestaurantMenu>}
+                ></Route>
+
+                <Route
+                  path="/city/delhi/search"
+                  element={<RestItemSearch></RestItemSearch>}
+                ></Route>
+
+                <Route
+                  path="/Search/:name"
+                  element={<SearchDish></SearchDish>}
+                ></Route>
+                {/* </Route> */}
+
+                <Route path="/CartPage" element={<CartPage></CartPage>}></Route>
+                <Route path="/LogIn" element={<LogIn></LogIn>}></Route>
               </Route>
             </Routes>
           </latContext.Provider>
@@ -108,4 +122,3 @@ const App = () => {
 };
 
 export default App;
-
