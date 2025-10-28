@@ -155,8 +155,8 @@ const SearchDish = () => {
         <h3 className="">Top dishesh near you</h3>
       </div>
 
-      <div className="w-[90%] p-2 flex flex-col  rounded-2xl">
-        <div className="w-full  grid place-items-center grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20   pt-10">
+      <div className="w-[90%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
+        <div className="w-full  grid place-items-center grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20    pt-10">
           {filterData?.length
             ? filterData.map((item) => (
                 <SearchDishInfo item={item}></SearchDishInfo>

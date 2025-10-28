@@ -22,7 +22,7 @@ const Header = ({scrollToContact}) => {
              
   return (
    <>
-     <nav className="w-full h-[100px] flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
+     <nav className="w-full h-25 flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
          
         <div className=" w-full max-w-8xl px-4 sm:px-4 md:px-8  ">
           <div className=" flex justify-evenly items-center  md:flex md:justify-evenly  lg:flex lg:justify-evenly">
@@ -99,7 +99,7 @@ const Header = ({scrollToContact}) => {
 
             {/* Hamburger Button (mobile only) */}
             <button
-              className="flex sm:hidden text-3xl text-orange-900 bg-white p-2 rounded-md"
+              className="  relative flex sm:hidden text-3xl text-orange-900 bg-white p-2 rounded-md"
               onClick={() => setSelect(!select)}
             >
               ☰
@@ -107,7 +107,7 @@ const Header = ({scrollToContact}) => {
           </div>
         </div>
         {select ? (
-          <div className="mobile w-full sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
+          <div className=" mobile w-full sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
              <Link to={`/`}
              onClick={() => setSelect(false)}>
              <p className="text-xl ">Home</p>

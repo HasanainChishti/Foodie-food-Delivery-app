@@ -61,20 +61,20 @@ const SearchDishInfo = ({ item }) => {
   // }
   return (
     //  <Link to={"/DishDetail/"} state={{item}}>
-    <div className=" h-[370px] w-[280px] rounded-xl  flex  flex-col md:flex-col gap-10 transition-xl relative shadow-md">
+    <div className=" h-94 w-70 rounded-xl  flex  flex-col md:flex-col gap-10 transition-xl relative shadow-md">
      
          <Link to={"/DishDetail/"} state={{item}}>
-      <div className="w-[280px] h-[220px]">
+      <div className="w-70 h-55">
         <img
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/" +
             item?.card?.card?.info?.imageId
           }
-          className="object-cover rounded-xl  w-[280px] h-[220px] shadow-md "
+          className="object-cover rounded-xl w-70 h-55 shadow-md "
         />
       </div>
 
-      <div className="flex h-[50px] flex-col text-2xl font-bold  gap-1 w-[280px] p-2 text-gray-800 ">
+      <div className="flex h-13 flex-col text-2xl font-bold  gap-1 w-70 p-2 text-gray-800 ">
         {/* <p className={"w-5 h-5" item?.card?.card?.info?"veg":"" }></p> */}
         {item?.card?.card?.info.hasOwnProperty("isVeg") ? (
           <img src={veg} className="w-7 h-7 absolute top-1 left-2"></img>
@@ -126,7 +126,7 @@ const SearchDishInfo = ({ item }) => {
               </button>
             ) : (
               <div
-                className="flex  w-[120px] justify-center align-middle   shadow-md border  rounded-xl 
+                className="flex  w-30 justify-center align-middle   shadow-md border  rounded-xl 
                  text-white px-4 py-2 bg-green-600 text-2xl font-semibold gap-3 items-center"
               >
                 <button
