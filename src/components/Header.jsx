@@ -22,11 +22,11 @@ const Header = ({scrollToContact}) => {
              
   return (
    <>
-     <nav className="w-[100vw] h-[100px] flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
-        
-        <div className=" w-full px-4 sm:px-4 md:px-8 ">
-          <div className=" flex justify-between items-center  lg:flex lg:justify-evenly">
-            <div className="flex items-center  p-2 rounded-xl">
+     <nav className="w-full h-[100px] flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
+         
+        <div className=" w-full max-w-8xl px-4 sm:px-4 md:px-8  ">
+          <div className=" flex justify-evenly items-center  md:flex md:justify-evenly  lg:flex lg:justify-evenly">
+            <div className="flex  items-center  p-2   rounded-xl ">
               {logo.map((char, i) => (
                 <span
                   key={i}

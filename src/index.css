@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
  .filter-btn {
   border: 1px solid #d1d5db; /* gray-300 */
   border-radius: 9999px; /* rounded-full */
