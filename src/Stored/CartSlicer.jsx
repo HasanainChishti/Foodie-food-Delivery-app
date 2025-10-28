@@ -6,22 +6,26 @@ const cart = createSlice({
   name: "cartSlice",
   initialState: {
     items: JSON.parse(localStorage.getItem("cartData")) || [],
-    restInfo:JSON.parse(localStorage.getItem("restInfo"))||[] ,
+    // restInfo:JSON.parse(localStorage?.getItem("restInfo"))||[] ,
+     restInfo:[] ,
     cnt: 0,
   },
   reducers: {
     addItem: (state, action) => {
       // console.log("action",action.payload);
-      const {restData,restInfo}=action.payload;
-      console.log("restdata&info",restData,restInfo);
+      // const {restData,restInfo}=action.payload;
+      // console.log("restdata&info",restData,restInfo);
       
       // console.log(state.restInfo,"state.restInfo is");
     
+     console.log(action.payload,"action")
      
-      state.items.push({ ...restData, quantity: 1 });
+      // state.items.push({ ...restData, quantity: 1 });
+      // localStorage.setItem("cartData", JSON.stringify(state.items));
+         state.items.push({ ...action.payload, quantity: 1 });
       localStorage.setItem("cartData", JSON.stringify(state.items));
 
-      state.restInfo=(restInfo);
+      // state.restInfo=(restInfo);
       // state.restInfo.push(Rest);
       localStorage.setItem("restInfo", JSON.stringify(state.restInfo));
       state.cnt++;
@@ -39,7 +43,7 @@ const cart = createSlice({
     incrementItem: (state, action) => {
       console.log("yes", state.items);
       // const {Cart,Rest}=action.payload;
-      console.log(action.payload);
+      console.log(action.payload,"id is here");
       const data = state.items.find((item) => item.id == action.payload.id);
       data.quantity++;
       // localStorage.setItem("cartData",JSON.stringify(state.items))

@@ -11,6 +11,7 @@ import { removeUser } from "../Stored/authSlicer";
 
 import Hero from "../components/Hero";
 import Header from "../components/Header"
+import { useRef } from "react";
 const SecondHome = () => {
   const cnt = useSelector((state) => state.cartSlice.items);
   const data = useSelector((state) => state.authSlice.userData);
@@ -29,6 +30,7 @@ const SecondHome = () => {
   function removeData() {
     dispatch(removeUser());
   }
+
   function detail() {
     return (
       <ul className="absolute bg-gray-100 text-xl font-semibold text-black  rounded-xl w-[100px]  p-2">
@@ -51,9 +53,10 @@ const SecondHome = () => {
       </ul>
     );
   }
+ 
   return (
     <>
-    <Header></Header>
+    <Header ></Header>
 
       <Outlet></Outlet>
     </>

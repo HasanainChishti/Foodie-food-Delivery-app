@@ -6,6 +6,8 @@ const auth=createSlice({
     },
     reducers:{
         addUser:(state,action)=>{
+            console.log(action.payload,"in auth");
+            
             state.userData=action.payload;
             console.log("in slixe",state.userData);
             

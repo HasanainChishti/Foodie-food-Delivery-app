@@ -20,8 +20,11 @@ const SearchBar = () => {
  
   async function searchRes(l) {
     setValue(l);
+    console.log("working");
+    
     dispatch(setT(1))
     console.log("value lenth is", value.length);
+
     const res = await fetch(
       `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/misc/place-autocomplete?input=${l}`
     );

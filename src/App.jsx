@@ -1,48 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Restaurant from "./Home";
-import RestaurantMenu from "../components/RestaurantsMenu";
-import RestItemSearch from "../components/RestItemSearch";
-import SearchDish from "../components/SearchDish";
-import SecondHome from "./SecondHome";
-import store from "../Stored/Store";
-import Hero from "../components/Hero";
+// import Restaurant from "./pages/Home";
+// import RestaurantMenu from "./components/RestaurantsMenu";
+// import RestItemSearch from "./components/RestItemSearch";
+import SearchDish from "./components/SearchDish";
+import SecondHome from "./pages/SecondHome";
+import store from "./Stored/Store";
+import Hero from "./components/Hero";
 import { Provider } from "react-redux";
-import CartPage from "./CartPage";
-import LogIn from "../components/LogIn";
-import { latContext } from "../components/ContextApi";
-import { lngContext } from "../components/ContextApi";
+import CartPage from "./pages/CartPage";
+import LogIn from "./components/LogIn";
+import DishDetail from "./pages/DishDetail"
+import { latContext } from "./components/ContextApi";
+import { lngContext } from "./components/ContextApi";
 import { TfiSearch } from "react-icons/tfi";
+import Home from "./pages/Home";
+import Order from "./pages/Order";
+import { HomeFoodData } from "./utils/OwnYourMindData";
 const App = () => {
   const [RestData, setRestData] = useState([]);
   const [onMindData, setOwnMindData] = useState([]);
-  const [lat, setLat] = useState(28.7040592);
-  const [lng, setLng] = useState(77.10249019999999);
-  // // const [status, setStatus] = useState(0);
-  // const [cartData, setCartData] = useState([]);
-
-  // console.log("lat is", lat);
-  // console.log("lng is", lng);
-  // function get_data_fr/om_local_storage() {
-  //   let data = JSON.parse(localStorage.getItem("cartData")) || [];
-  //   setCartData(data);
-  // }
-  // useEffect(() => {
-  //   get_data_from_local_storage();
-  // }, []);
+  const [lat, setLat] = useState(19.0760);
+  const [lng, setLng] = useState(72.8777);
   useEffect(() => {
     async function fetchData() {
+      // 1589
       try {
         //  setStatus("...loading");
+        console.log(lat,lng,"is here");
+        
         const res = await fetch(
           `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+          
         );
+        // https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
+        
+      // work fine
         const data = await res.json();
         console.log("all data", data);
+       if(data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
+       {
         setOwnMindData(
           data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
         );
+      }
+      else{
+        setOwnMindData(HomeFoodData);
+      }
         if ("gridElements" in data?.data?.cards[1]?.card?.card)
           console.log("cur ", data?.data?.cards[1]?.card?.card);
         else console.log("no");
@@ -68,7 +73,7 @@ const App = () => {
       }
     }
     fetchData();
-  }, [lat, lng]);
+  }, [lat,lng]);
 
   return (
     <>
@@ -78,38 +83,30 @@ const App = () => {
         <lngContext.Provider value={{ lng, setLng }}>
           <latContext.Provider value={{ lat, setLat }}>
             <Routes>
-              {/* <Route path="/" element={ <Home RestData={RestData} onMindData={onMindData}></Home> }></Route> */}
-
-              {/* <Route path="/Grocery/:name" element={<GroceryPage></GroceryPage>}></Route> */}
-
+          
               <Route element={<SecondHome />}>
                 <Route
                   path="/"
                   element={
-                    <Restaurant
+                    <Home
                       RestData={RestData}
                       onMindData={onMindData}
-                    ></Restaurant>
+                    ></Home>
                   }
                 ></Route>
-
-                {/* <Route element={<SecondHome />}> */}
-                <Route
-                  path="/city/delhi/:id"
-                  element={<RestaurantMenu></RestaurantMenu>}
-                ></Route>
-
-                <Route
+               
+                {/* <Route
                   path="/city/delhi/search"
                   element={<RestItemSearch></RestItemSearch>}
-                ></Route>
+                ></Route> */}
 
                 <Route
                   path="/Search/:name"
                   element={<SearchDish></SearchDish>}
                 ></Route>
                 {/* </Route> */}
-
+                 <Route path="/DishDetail" element={<DishDetail></DishDetail>}></Route>
+                   <Route path="Profile" element={<Order></Order>}></Route>
                 <Route path="/CartPage" element={<CartPage></CartPage>}></Route>
                 <Route path="/LogIn" element={<LogIn></LogIn>}></Route>
               </Route>

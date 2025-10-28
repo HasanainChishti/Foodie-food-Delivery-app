@@ -5,6 +5,8 @@ import { cartContext } from '../components/ContextApi'
 import { clearCart, decrementItem, incrementItem } from '../Stored/CartSlicer'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router'
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../config/firebaseAuth"; 
 const CartPage = () => {
     let data=useSelector(state=>state.cartSlice.items);
     let userData=useSelector(state=>state.authSlice.userData);
@@ -22,28 +24,38 @@ const CartPage = () => {
      let tax=Math.floor(((sum/100)*2)/100);
     console.log("data",data);
   //  let {cartData,setCartData}=useContext(cartContext);
-  function handleOrder()
-  {
-    if(userData)
-    {
-    toast.success('Ordered SucecessFully',{
-                style:{
-                  fontSize:"20px",
-                  fontWeight:"bold"
-                }
-               });
-              }
-              else
-              {
-               navigate("/Login")
-          //         <Link to="/LogIn">
-          //   <button className="  text-white text-2xl font-bold  shadow-md hover:text-black  
-          //   px-4 py-2 rounded-full transition">
-          //     Log In
-          //   </button>
-          // </Link>
-              }
+  const placeOrder = async (userId, cartItems, total) => {
+  try {
+    // Firestore subcollection: users/{userId}/orders
+    const ordersRef = collection(db, "users", userId, "orders");
+
+    // addDoc returns a reference with the new document ID
+    const orderDoc = await addDoc(ordersRef, {
+      items: cartItems,
+      totalAmount: total,
+      paymentMode: pay ? "Cash on Delivery" : "Online",
+      createdAt: serverTimestamp(),
+    });
+
+    console.log("Order placed with ID:", orderDoc.id);
+  } catch (error) {
+    console.error("Error placing order:", error);
   }
+};
+function handleOrder(user) {
+  console.log(user,"userinfo");
+  
+  if (user && user.uid) {
+    const userId = user.uid;
+    placeOrder(userId, data, (sum / 100) + tax); // Pass cart data + total
+
+    toast.success("Order placed successfully!", {
+      style: { fontSize: "20px", fontWeight: "bold" },
+    });
+  } else {
+    navigate("/Login");
+  }
+}
   function handleClearCart()
   {
     toast.success('Cart is Clear',{
@@ -215,7 +227,7 @@ const CartPage = () => {
                 </div>
               </div>
               <div  className='p- flex flex-col gap-3'>
-                <button className='p-1 text-white bg-green-600 text-2xl rounded-xl' onClick={handleOrder}>Place Order</button>
+                <button className='p-1 text-white bg-green-600 text-2xl rounded-xl' onClick={()=>handleOrder(userData)}>Place Order</button>
                 {/* <button></button> */}
               </div>
           </div> 

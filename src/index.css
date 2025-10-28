@@ -1,9 +1,16 @@
 @import "tailwindcss";
-/* html, body, #root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  
-}  */
+
+ .filter-btn {
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 9999px; /* rounded-full */
+  padding: 0.25rem 1rem; /* py-1 px-4 */
+  color: #374151; /* text-gray-700 */
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover {
+  background-color: #d1fae5; /* green-100 */
+  color: #047857; /* green-700 */
+}

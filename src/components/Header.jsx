@@ -4,21 +4,25 @@ import { Link } from 'react-router-dom';
 import { TfiSearch } from "react-icons/tfi";
 import { BsCart4 } from "react-icons/bs";
 import { MdLogin } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const Header = () => {
+const Header = ({scrollToContact}) => {
       const logo = ["F", "o", "o", "d", "i", "e"];
         const [ProfileDetail, setProfileDetail] = useState(0);
        const [search, setSearch] = useState("");
          const userData = useSelector((state) => state.authSlice.userData);
            const [select, setSelect] = useState(0);
+           const [prof,setProf]=useState(0);
             const cnt = useSelector((state) => state.cartSlice.items);
             // console.log(cnt,"is here");
+            console.log(userData,"udata");
             
+             
   return (
    <>
-     <nav className="w-auto h-[100px] flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
+     <nav className="w-[100vw] h-[100px] flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
         
         <div className=" w-full px-4 sm:px-4 md:px-8 ">
           <div className=" flex justify-between items-center  lg:flex lg:justify-evenly">
@@ -45,11 +49,17 @@ const Header = () => {
                   Home
                 </p>
               </Link>
+              
               <Link to={`/Search/${search || "Biryani"}`}>
                 <p className="text-2xl font-semibold flex items-center gap-1 hover:text-black transition">
-                  <TfiSearch className="text-xl" /> Search
+                  <TfiSearch className="text-xl" />Search
                 </p>
               </Link>
+              <button onClick={()=>{const section=document.getElementById('contact-section')
+                  section?.scrollIntoView({ behavior: "smooth" })}
+            } className="text-2xl font-semibold flex items-center gap-1 hover:text-black transition">
+                  Contact
+                </button>
 {/* https://cors-by-codethread-for-swiggy.vercel.app/cors/ */}
               <Link to="/CartPage">
                 <button className="flex items-center gap-1 text-2xl font-semibold hover:text-black transition">
@@ -66,17 +76,23 @@ const Header = () => {
                 </Link>
               ) : (
                 <div className="relative">
+                  
                   <button
-                    className="text-white text-2xl font-bold"
-                    onClick={() => setProfileDetail(!ProfileDetail)}
+                    className="flex justify-center align-middle items-center text-white text-4xl font-bold "
+                    onClick={() => setProf((prof)=>!prof)}
                   >
-                    <img
-                      src={""}
-                      alt="profile"
-                      className="object-cover h-[50px] w-[50px] rounded-full"
-                    />
+                  <CgProfile></CgProfile>
+                  {
+
+                  prof?(<ul className='absolute top-10 outline-green-200 shadow-md rounded-xl p-2 bg-gray-100 text-black text-xl font-semibold'>
+                  <Link to={`/Profile`}>
+                    <li>Orders</li>
+                   </Link>
+                    <li>LogOut</li>
+                  </ul>):null
+}
                   </button>
-                  {ProfileDetail && detail()}
+                  {/* {ProfileDetail && detail()} */}
                 </div>
               )}
             </div>
@@ -91,7 +107,7 @@ const Header = () => {
           </div>
         </div>
         {select ? (
-          <div className="mobile sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
+          <div className="mobile w-full sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
              <Link to={`/`}
              onClick={() => setSelect(false)}>
              <p className="text-xl ">Home</p>
@@ -104,6 +120,10 @@ const Header = () => {
                 <TfiSearch /> Search
               </p>
             </Link>
+            <button className='text-lg ' onClick={()=>{
+              const section=document.getElementById('contact-section')
+               section?.scrollIntoView({ behavior: "smooth" })
+            }}>Contact</button>
 
             <Link to="/CartPage" onClick={() => setSelect(false)}>
               <p className="text-lg flex items-center gap-2">
@@ -118,14 +138,25 @@ const Header = () => {
                 </p>
               </Link>
             ) : (
-              <div className="flex items-center gap-2">
-                <img
-                  src={assets}
-                  alt="profile"
-                  className="object-cover h-[40px] w-[40px] rounded-full"
-                />
-                <span>Profile</span>
-              </div>
+               <div className="relative">
+                  
+                  <button
+                    className="flex justify-center align-middle items-center text-white text-4xl font-bold "
+                    onClick={() => setProf((prof)=>!prof)}
+                  >
+                  <CgProfile></CgProfile>
+                  {
+
+                  prof?(<ul className='absolute top-10 outline-green-200 shadow-md rounded-xl p-2 bg-gray-100 text-black text-xl font-semibold'>
+                  <Link to={`/Profile`}>
+                    <li>Orders</li>
+                   </Link>
+                    <li>LogOut</li>
+                  </ul>):null
+}
+                  </button>
+                  {/* {ProfileDetail && detail()} */}
+                </div>
             )}
           </div>
         ) : null}

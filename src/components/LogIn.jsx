@@ -7,6 +7,7 @@ import { addUser } from '../Stored/authSlicer';
 import { useNavigate } from 'react-router';
 import {setDoc,doc,getDoc} from "firebase/firestore"
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useSelector } from 'react-redux';
 const LogIn = () => {
    
  
@@ -18,11 +19,13 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const navigate=useNavigate();
   const dispatch=useDispatch()
+  const userData=useSelector(state=>state.authSlice.userData);
+  console.log(userData,"in cart page");
+  
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (isSignup) {
-      // SIGNUP
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
@@ -39,6 +42,7 @@ const LogIn = () => {
         });
          console.log("Signup successful:", user);
      dispatch(addUser({
+          uid:user.uid,
           name: name,
           phone: phone,
           email: user.email
@@ -58,20 +62,20 @@ const LogIn = () => {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-
+   
         // Firestore se extra data fetch
              console.log(db);
         const docSnap = await getDoc(doc(db, "users", user.uid));
    
         
-        if (docSnap.exists()) {
-          console.log("User data:", docSnap.data());
-        } else {
-          console.log("No user data found in Firestore");
-        }
+    if (docSnap.exists()) {
+  const data = docSnap.data();
+    }
+
            dispatch(addUser({
-          name: name,
-          phone: phone,
+            uid:user.uid,
+          name:name,
+          phone:phone,
           email: user.email
         }))
         alert("Login successful!");
