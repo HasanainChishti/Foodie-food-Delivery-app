@@ -43,7 +43,7 @@ const Header = ({scrollToContact}) => {
             </div>
 
             {/* Desktop Buttons */}
-            <div className="hidden sm:flex items-center sm:gap-4 md:gap-7 lg:gap-10 text-white   font-bold">
+            <div className="hidden sm:flex items-center sm:gap-2 md:gap-4 lg:gap-5 text-white   font-bold">
                <Link to={`/`}>
                 <p className="text-2xl font-semibold flex items-center gap-1 hover:text-black transition">
                   Home
