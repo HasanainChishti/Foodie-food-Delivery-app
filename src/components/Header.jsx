@@ -25,7 +25,7 @@ const Header = ({scrollToContact}) => {
      <nav className="w-full h-20 flex items-center bg-orange-600 sticky top-0 shadow-md z-50 ">
          
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-4 md:px-8  ">
-          <div className=" flex  items-center justify-between sm:flex sm:justify-around md:flex md:justify-evenly   lg:flex lg:justify-evenly">
+          <div className=" flex  items-center justify-between sm:flex sm:justify-around md:flex md:justify-evenly   lg:flex lg:justify-">
             <div className="flex  items-center  p-2   rounded-xl ">
               {logo.map((char, i) => (
                 <span
