@@ -61,20 +61,20 @@ const SearchDishInfo = ({ item }) => {
   // }
   return (
     //  <Link to={"/DishDetail/"} state={{item}}>
-    <div className=" h-86 w-60 rounded-xl  flex  flex-col md:flex-col gap-10 transition-xl relative shadow-md">
+    <div className=" h-83 w-55 rounded-xl  flex  flex-col md:flex md:flex-col lg:flex lg:flex-col gap-6 transition-xl relative shadow-2xs bg-amber-50">
      
          <Link to={"/DishDetail/"} state={{item}}>
-      <div className="w-60 h-50">
+      <div className="w-55 h-50">
         <img
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/" +
             item?.card?.card?.info?.imageId
           }
-          className="object-cover rounded-xl w-60 h-50 shadow-md "
+          className="object-cover rounded-xl w-55 h-50 shadow-md "
         />
       </div>
 
-      <div className="flex h-13 flex-col text-2xl font-bold  gap-1 w-60 p-2 text-gray-800 ">
+      <div className="flex h-13 flex-col text-2xl font-semibold  gap-1 w-55  text-gray-800 ">
         {/* <p className={"w-5 h-5" item?.card?.card?.info?"veg":"" }></p> */}
         {item?.card?.card?.info.hasOwnProperty("isVeg") ? (
           <img src={veg} className="w-7 h-7 absolute top-1 left-2"></img>
@@ -83,9 +83,9 @@ const SearchDishInfo = ({ item }) => {
         )}
         {/* <p>{item?.card?.card?.restaurant?.info?.name||"kkk"}</p> */}
 
-        <p>
-          {item?.card?.card?.info?.name.length > 20
-            ? item?.card?.card?.info?.name.slice(0, 16) + "..."
+        <p className="w-48 flex flex-nowrap">
+          {item?.card?.card?.info?.name.length > 10
+            ? item?.card?.card?.info?.name.slice(0, 10) + "..."
             : item?.card?.card?.info?.name}
         </p>
         <p>₹{item?.card?.card?.info?.price / 100 || "kkk"}</p>

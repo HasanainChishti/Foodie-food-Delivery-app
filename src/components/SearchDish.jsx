@@ -135,16 +135,16 @@ const SearchDish = () => {
         <div className="search relative flex w-[270px] sm:w-[290px] md:w-[320px] lg:w-[360px] h-[60px] ">
           <input
             type="text"
-            placeholder=" Enter dish name (Biryani,VadaPav...)"
-            className=" flex  shadow-md outline-3 w-[250px] sm:w-[300px] md:w-[400px] h-[50px]   text-black text-xl  rounded-xl "
+            placeholder="Search Dish..."
+            className=" flex  shadow-2xl border-2 w-[250px] sm:w-[250px] md:w-[300px] h-[50px]   text-black text-xl  rounded-xl "
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
           <button
             onClick={() => getDish()}
-            className="sm:absolute  sm:right-0  bg-orange-400 shadow-md px-1 rounded-xl h-[50px] "
+            className="sm:absolute  sm:right-0 place-items-center bg-none text-orange-400 shadow-md rounded-xl h-[46px] text-3xl w-[50px]"
           >
-            Search
+            +
           </button>
         </div>
       </div>
@@ -157,7 +157,7 @@ const SearchDish = () => {
       </div>
 
       <div className="w-[75%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
-        <div className="w-full  grid place-items-center grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20    pt-10">
+        <div className="w-full  grid grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20    pt-10">
           {filterData?.length
             ? filterData.map((item) => (
                 <SearchDishInfo item={item}></SearchDishInfo>

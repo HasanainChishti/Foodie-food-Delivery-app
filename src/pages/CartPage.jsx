@@ -106,7 +106,7 @@ function handleOrder(user) {
     <div className=' flex flex-col  mx-auto md:flex-row md:mx-auto md:justify-between '>
      
     <div className=' w-[45%] flex flex-col ml-10  p-1 mx-auto '>
-           <div className='flex flex-col    md:flex-row   justify-between '>
+           {/* <div className='flex flex-col    md:flex-row   justify-between '>
             <img className='object-cover w-full md:w-[40%] h-[150px] p-2 shadow-md  rounded-2xl' 
              src={ "https://media-assets.swiggy.com/swiggy/image/upload/"+(restData?.info?.cloudinaryImageId || 
               restData?.info?.cloudinaryImageId )}></img>
@@ -119,19 +119,19 @@ function handleOrder(user) {
               </p>
               <p className='font-semibold text-xl'>Address:{restData?.info?.areaName}</p>
              </div>
-           </div>
-           <hr></hr>
+           </div> */}
+           {/* <hr></hr> */}
 
-    <div className=' w-[100%] flex flex-col gap-2    shadow-md p-2'>
+    <div className=' w-[100%] flex flex-col gap-2  mt-10  p-2'>
          {
                
       data.map((item,i)=>(
   //  /     console.log(j,j);
         
-         <div className=" flex flex-col-reverse   md:flex-row  border-b-1 rounded-xl">
+         <div className=" flex flex-col-reverse   md:flex-row  border-1  text-orange-400 rounded-xl p-2 h-[140px]">
           {/* details section */}
                 <div className=" w-[70%] flex flex-col gap-2">
-                  <p className=" text-xl text-gray-700 font-bold mb-1 w-[50%]">
+                  <p className=" text-xl text-gray-700 font-bold mb-1 w-[60%]">
                     {item?.name}
                   </p>
                   {/* <p>{"₹" +Number(restData?.variantsV2?.pricingModels?.[0]?.price/100)}</p> */}
@@ -143,7 +143,11 @@ function handleOrder(user) {
                     {"(" + item?.ratings?.aggregatedRating?.ratingCountV2 + ")"}
                   </span>
                   <p className="text-xl font-semibold mt-2">{item?.description}</p> */}
-                  
+                   <div className='flex  text-green-600 bg-white shadow-md border-1 rounded-xl text-xl p-1 gap-1 rounde justify-between w-[80px]'>
+                     <button onClick={()=>dispatch(incrementItem(item))}>+</button>
+                     <span>{item.quantity}</span> 
+                     <button onClick={()=>dispatch(decrementItem(item))} >-</button>
+                     </div>
                 </div>
 
                 {/* image section */}
@@ -156,11 +160,7 @@ function handleOrder(user) {
                     }
                   ></img>
                   
-                    <div className='flex absoulte bottom-0 left-10 text-green-600 bg-white shadow-md border-1 rounded-xl text-xl p-1 gap-1 rounde justify-between w-[80px]'>
-                     <button onClick={()=>dispatch(incrementItem(item))}>+</button>
-                     <span>{item.quantity}</span> 
-                     <button onClick={()=>dispatch(decrementItem(item))} >-</button>
-                     </div>
+                   
                       {/* // <button */}
                       {/* //   className="absolute  bottom-0 left-10 shadow-md border  rounded-xl 
                       //    text-red-600 px-1 py-1 bg-white  font-semibold"
