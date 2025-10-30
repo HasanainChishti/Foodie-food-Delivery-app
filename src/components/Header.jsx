@@ -72,7 +72,7 @@ const Header = ({scrollToContact}) => {
               {!userData ? (
                 <Link to="/LogIn">
                   <button className="flex justify-center align-middle items-center gap-1 text-xl font-semibold hover:text-black transition px-3 py-1 rounded-lg">
-                    {/* <MdLogin className="text-xl" /> Login */}
+                    <MdLogin className="text-xl" /> Login
                   </button>
                 </Link>
               ) : (
