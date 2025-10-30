@@ -25,9 +25,11 @@ const Hero = ({scrollToMenu}) => {
     <p className="hidden md:flex text-lg md:text-3xl md:font-bold text-gray-200 mb-8">
       Discover your favorite dishes from top restaurants near you.
     </p>
-
+       <div className="location flex justify-center lg:hidden">
+        <SearchBar></SearchBar>
+       </div>
     {/* Buttons */}   
-    <div className="flex flex-col w-1/2  items-center mx-auto sm:flex-row sm:w-full md:w-full  md:flex-row flex-wrap justify-center gap-4">
+    <div className=" hidden w-1/2 sm:flex justify-center mt-5 mx-auto sm:flex-row sm:w-full md:w-full  md:flex-row  gap-4">
       <button  onClick={scrollToMenu} className="bg-white hover:bg-amber-600 text-gray-800 font-semibold px-6 py-3 rounded-full shadow-md transition">
        🍔 View Menu
       </button>
@@ -40,6 +42,22 @@ const Hero = ({scrollToMenu}) => {
       <Link to={"/search/Biryani/"}>
       <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-6 py-3 rounded-full shadow-md transition">
         🔍 Search Dish
+      </button>
+      </Link>
+    </div>
+       <div className="flex justify-center mt-4  sm:hidden w-full  mx-auto gap-2 ">
+      <button  onClick={scrollToMenu} className="bg-white hover:bg-amber-600 text-gray-800 font-semibold px-2 py-2 rounded-full shadow-md transition">
+       🍔Menu
+      </button>
+
+ <button  onClick={()=>{const section = document.getElementById('topDish');
+    section?.scrollIntoView({ behavior: "smooth" });
+  }} className="bg-white hover:bg-amber-600 text-gray-800 font-semibold px-2 py-2 rounded-full shadow-md transition">
+       ⭐Dish
+      </button>
+      <Link to={"/search/Biryani/"}>
+      <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-3 py-2 rounded-full shadow-md transition">
+        🔍 Dish
       </button>
       </Link>
     </div>

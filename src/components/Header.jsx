@@ -22,10 +22,10 @@ const Header = ({scrollToContact}) => {
              
   return (
    <>
-     <nav className="w-full h-25 flex  items-center bg-orange-600 sm:w-full md:w-full  lg:w-full   sticky top-0 shadow-md z-50 ">
+     <nav className="w-full h-20 flex items-center bg-orange-600 sticky top-0 shadow-md z-50 ">
          
-        <div className=" w-full max-w-8xl px-4 sm:px-4 md:px-8  ">
-          <div className=" flex justify-evenly items-center  md:flex md:justify-evenly  lg:flex lg:justify-evenly">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-4 md:px-8  ">
+          <div className=" flex  items-center justify-between sm:flex sm:justify-around md:justify-evenly  md:flex lg:flex lg:justify-evenly">
             <div className="flex  items-center  p-2   rounded-xl ">
               {logo.map((char, i) => (
                 <span
@@ -107,10 +107,10 @@ const Header = ({scrollToContact}) => {
           </div>
         </div>
         {select ? (
-          <div className=" mobile w-full sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
+          <div className=" absolute top-20 mobile w-full items-center sm:hidden flex mx-auto flex-col bg-orange-500 text-white font-bold py-4 px-6 gap-4">
              <Link to={`/`}
              onClick={() => setSelect(false)}>
-             <p className="text-xl ">Home</p>
+             <p className="text-xl  ">Home</p>
              </Link>
             <Link
               to={`/Search/${search || "null"}`}
@@ -120,10 +120,10 @@ const Header = ({scrollToContact}) => {
                 <TfiSearch /> Search
               </p>
             </Link>
-            <button className='text-lg ' onClick={()=>{
+            <p className='text-lg ' onClick={()=>{
               const section=document.getElementById('contact-section')
                section?.scrollIntoView({ behavior: "smooth" })
-            }}>Contact</button>
+            }}>Contact</p>
 
             <Link to="/CartPage" onClick={() => setSelect(false)}>
               <p className="text-lg flex items-center gap-2">
