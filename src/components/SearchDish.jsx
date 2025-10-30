@@ -97,26 +97,26 @@ const SearchDish = () => {
   // ⭐💰🥗
   return (
     <>
-      <div className="flex  flex-col lg:flex-row  md:justify-between mt-30 w-[80%] mx-auto  ">
-        <div className="flex flex-col sm:flex-col md:flex-row gap-2 w-[80%] mb-10">
+      <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
+        <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row gap-2 w-[100%] mb-10">
           {[`veg`, `non-veg`, "Ratings", "₹300 - ₹800", "Less than ₹300"].map(
             (filter, i) => (
               <button
                 key={i}
                 // from-orange-500 to-orange-300
                 onClick={() => getFilterData(filter)}
-                className="p-2 px-4 rounded-full font-semibold text-lg shadow-md bg-gradient-to-r from-orange-200 to-orange-400  text-black hover:scale-105 hover:shadow-xl transition"
+                className=" w-auto py-2 px-4 rounded-full font-semibold text-lg shadow-md bg-gradient-to-r from-orange-200 to-orange-400  text-black hover:scale-105 hover:shadow-xl transition"
               >
                 {filter == "veg" ? (
                   <div>
-                    <span className="w-4 h-4 text-green-600  bg-green-600 ">
+                    <span className=" text-green-600  bg-green-600 ">
                       veg
                     </span>
                     <span>veg</span>
                   </div>
                 ) : filter == "non-veg" ? (
                   <div>
-                    <span className="w-4 h-4 text-red-600 bg-red-600 ">
+                    <span className=" text-red-600 bg-red-600 ">
                       veg
                     </span>
                     <span>non-veg</span>
@@ -124,14 +124,15 @@ const SearchDish = () => {
                 ) : (
                   <div>
                     {/* <span className="w-2 h-2 bg-green-600"></span> */}
-                    <span>{filter}</span>
+                    {/* <span>{filter}</span> */}
+                    {filter}
                   </div>
                 )}
               </button>
             )
           )}
         </div>
-        <div className="search relative flex w-[270px] sm:w-[330px] md:w-[400px] h-[60px] ">
+        <div className="search relative flex w-[270px] sm:w-[290px] md:w-[320px] lg:w-[360px] h-[60px] ">
           <input
             type="text"
             placeholder=" Enter dish name (Biryani,VadaPav...)"
@@ -152,10 +153,10 @@ const SearchDish = () => {
         className="w-[80%]  gap-0 mx-auto flex flex-row   md:flex-row  md:justify-between items-center align-middle mt-3 
       text-3xl font-bold "
       >
-        <h3 className="">Top dishesh near you</h3>
+        {/* <h3 className="">Top dishesh near you</h3> */}
       </div>
 
-      <div className="w-[90%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
+      <div className="w-[75%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
         <div className="w-full  grid place-items-center grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20    pt-10">
           {filterData?.length
             ? filterData.map((item) => (

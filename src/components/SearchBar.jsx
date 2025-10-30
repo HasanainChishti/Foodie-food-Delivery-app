@@ -59,9 +59,9 @@ const SearchBar = () => {
       <div className=" ">
        
         <input
-          placeholder="Location"
+          placeholder="Enter Location"
           type="text"
-          className="outline-none  text-black font-bold bg-gray-50 rounded-2xl px-2 py-4  "
+          className="outline-none  text-black font-bold bg-gray-50 rounded-2xl px-2 py-2 "
           onChange={(e) =>
             e.target.value != ""
               ? searchRes(e.target.value)
