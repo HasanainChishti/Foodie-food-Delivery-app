@@ -80,15 +80,26 @@ const SearchDish = () => {
         filterData.filter(
           (item) =>  item?.card?.card?.info?.price/100 <= 300))
     }
-    // setDish(filterData);
+     else if(filter==="Ratings")
+     {
+     const sorted=[...filterData].sort((a,b)=>b.card?.card?.info?.ratings?.aggregatedRating.rating-a.card?.card?.info?.ratings?.aggregatedRating.rating);
+    setFilterData(sorted)
+    //  console.log(filterData,"sort data");
+     
+     } 
+     else if(filter==="low to high")
+     {
+      const sorted=[...filterData].sort((a,b)=>a.card?.card?.info?.price-b.card?.card?.info?.price);
+    setFilterData(sorted)
+     }
   }
   useEffect(() => {
     console.log("effect func",input);
 //
     fetchDish(input);
-  }, [lat, lng, input]);
+  }, [lat, lng,input]);
   console.log("dish data", dish);
-  function getDish() {
+  function getDish(search) {
     // if(search)
     // yaha pe jo bhi sidh he usme dish word add karna pdega agar nahi he to tabhi data aayega
     console.log('yes called',search);
@@ -141,7 +152,7 @@ const SearchDish = () => {
             value={search}
           />
           <button
-            onClick={() => getDish()}
+            onClick={() => setInput(search)}
             className="sm:absolute  sm:right-0 place-items-center bg-none text-orange-400 shadow-md rounded-xl h-[46px] text-3xl w-[50px]"
           >
             +
