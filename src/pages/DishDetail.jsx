@@ -4,6 +4,7 @@ import veg from "../iconImages/veg.png";
 import nonVeg from "../iconImages/nonVeg.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, decrementItem, incrementItem } from '../Stored/CartSlicer';
+import Footer from '../components/Footer';
 const DishDetail=()=>{
      let locaion=useLocation();
      let item= locaion.state||{};
@@ -27,6 +28,7 @@ const DishDetail=()=>{
          
        }
    return (
+    <>
    <div className=" mt-10 flex ">
                    
                  
@@ -69,6 +71,8 @@ const DishDetail=()=>{
                                      
              
    </div>
+   <Footer></Footer>
+   </>
    )
 }
 export default DishDetail;

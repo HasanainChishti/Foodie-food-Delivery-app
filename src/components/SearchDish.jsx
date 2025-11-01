@@ -5,6 +5,7 @@ import SearchDishInfo from "./SearchDishInfo";
 import { latContext, lngContext } from "./ContextApi";
 import veg from "../iconImages/veg.png";
 import nonVeg from "../iconImages/nonVeg.png";
+import Footer from "./Footer";
 const SearchDish = () => {
   let { name } = useParams();
   console.log(name,"dish");
@@ -58,15 +59,15 @@ const SearchDish = () => {
     // let filterData;
     if (filter === "veg") {
       console.log("veg yes");
-      setFilterData(dish.filter((item) => item?.card?.card?.info?.isVeg));
+      setFilterData(filterData.filter((item) => item?.card?.card?.info?.isVeg));
     } else if (filter === "non-veg") {
       console.log("nonveg yes");
-      setFilterData(dish.filter((item) => !item?.card?.card?.info?.isVeg));
+      setFilterData(filterData.filter((item) => !item?.card?.card?.info?.isVeg));
     } else if (filter === "₹300 - ₹800") {
       // (item?.card?.card?.info?.price/100)<=100)
       // console.log("300- 600 yes");
       setFilterData(
-        dish.filter(
+        filterData.filter(
           (item) =>
             item?.card?.card?.info?.price/100 >300 &&
             item?.card?.card?.info?.price/100 <= 800
@@ -99,7 +100,7 @@ const SearchDish = () => {
     <>
       <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
         <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row gap-2 w-[100%] mb-10">
-          {[`veg`, `non-veg`, "Ratings", "₹300 - ₹800", "Less than ₹300"].map(
+          {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map(
             (filter, i) => (
               <button
                 key={i}
@@ -108,18 +109,17 @@ const SearchDish = () => {
                 className=" w-auto py-2 px-4 rounded-full font-semibold text-lg shadow-md bg-gradient-to-r from-orange-200 to-orange-400  text-black hover:scale-105 hover:shadow-xl transition"
               >
                 {filter == "veg" ? (
-                  <div>
-                    <span className=" text-green-600  bg-green-600 ">
+                  <div className="flex">
+                     <img src={veg} className="w-7 h-7 "></img>
                       veg
-                    </span>
-                    <span>veg</span>
+                   
+                   
                   </div>
                 ) : filter == "non-veg" ? (
-                  <div>
-                    <span className=" text-red-600 bg-red-600 ">
-                      veg
-                    </span>
-                    <span>non-veg</span>
+                  <div className="flex">
+                    
+                      <img src={nonVeg} className="w-7 h-7 "></img>
+                      nonVeg
                   </div>
                 ) : (
                   <div>
@@ -148,7 +148,8 @@ const SearchDish = () => {
           </button>
         </div>
       </div>
-
+     <div className="btn mt-0 pt-0 w-[80%]  flex justify-start mx-auto "><button className="shadow-md bg-green-400 px-2 p-2 rounded-full" 
+     onClick={()=>setFilterData(dish)}>ClearFilter</button></div>
       <div
         className="w-[80%]  gap-0 mx-auto flex flex-row   md:flex-row  md:justify-between items-center align-middle mt-3 
       text-3xl font-bold "
@@ -165,6 +166,7 @@ const SearchDish = () => {
             : null}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

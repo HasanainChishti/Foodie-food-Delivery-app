@@ -22,7 +22,7 @@ const Hero = ({scrollToMenu}) => {
     <h2 className="text-4xl  md:text-6xl font-extrabold mb-4 ">
       Delicious Food Delivered <br /> <span className="text-white">At Your Doorstep 🍽️</span>
     </h2>
-    <p className="hidden md:flex text-lg md:text-3xl md:font-bold text-gray-200 mb-8">
+    <p className="hidden md:flex text-lg md:text-3xl md:font-bold text-orange-400 mb-8 bg-white p-2 rounded-full">
       Discover your favorite dishes from top restaurants near you.
     </p>
        <div className="location flex justify-center lg:hidden">

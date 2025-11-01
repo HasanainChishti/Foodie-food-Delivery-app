@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, decrementItem, incrementItem } from "../Stored/CartSlicer";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
+
 const SearchDishInfo = ({ item }) => {
   // const [count,setCount]=useState(0);
 
@@ -61,7 +62,7 @@ const SearchDishInfo = ({ item }) => {
   // }
   return (
     //  <Link to={"/DishDetail/"} state={{item}}>
-    <div className=" h-83 w-55 rounded-xl  flex  flex-col md:flex md:flex-col lg:flex lg:flex-col gap-6 transition-xl relative shadow-2xs bg-amber-50">
+    <div className=" h-82 w-55 rounded-xl  flex  flex-col md:flex md:flex-col lg:flex lg:flex-col gap-6 transition-xl relative shadow-2xs bg-amber-50">
      
          <Link to={"/DishDetail/"} state={{item}}>
       <div className="w-55 h-50">
@@ -74,7 +75,7 @@ const SearchDishInfo = ({ item }) => {
         />
       </div>
 
-      <div className="flex h-13 flex-col text-2xl font-semibold  gap-1 w-55  text-gray-800 ">
+      <div className="flex h-16 flex-col text-2xl font-semibold p-2 gap-2 w-55  text-gray-800 ">
         {/* <p className={"w-5 h-5" item?.card?.card?.info?"veg":"" }></p> */}
         {item?.card?.card?.info.hasOwnProperty("isVeg") ? (
           <img src={veg} className="w-7 h-7 absolute top-1 left-2"></img>
@@ -83,12 +84,16 @@ const SearchDishInfo = ({ item }) => {
         )}
         {/* <p>{item?.card?.card?.restaurant?.info?.name||"kkk"}</p> */}
 
-        <p className="w-48 flex flex-nowrap">
+        <p className="w-55 flex flex-nowrap text-xl">
           {item?.card?.card?.info?.name.length > 10
-            ? item?.card?.card?.info?.name.slice(0, 10) + "..."
+            ? item?.card?.card?.info?.name.slice(0, 20) + "..."
             : item?.card?.card?.info?.name}
         </p>
-        <p>₹{item?.card?.card?.info?.price / 100 || "kkk"}</p>
+        <div className="flex justify-between px-2  text-xl">
+          <p>⭐{item?.card?.card?.info?.ratings?.aggregatedRating?.rating}</p>
+                    <p>₹{item?.card?.card?.info?.price / 100 || "kkk"}</p>
+        </div>
+        
 </div>
 </Link>
   <div className="">
@@ -119,7 +124,7 @@ const SearchDishInfo = ({ item }) => {
             count === 0 ? (
               <button
                 className="   shadow-md border  rounded-xl 
-         text-white px-4 py-2 bg-green-500 text-xl font-semibold text-center"
+         text-white px-4 py-1 bg-green-500 text-xl font-semibold text-center"
                 onClick={() => handleAddItem()}
               >
                 Add to Cart
@@ -151,8 +156,9 @@ const SearchDishInfo = ({ item }) => {
       </div>
       
       
-      
+       {/* <Footer></Footer> */}
     </div>
+    
   );
 };
 
