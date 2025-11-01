@@ -85,8 +85,8 @@ const SearchDishInfo = ({ item }) => {
         {/* <p>{item?.card?.card?.restaurant?.info?.name||"kkk"}</p> */}
 
         <p className="w-55 flex flex-nowrap text-xl">
-          {item?.card?.card?.info?.name.length > 10
-            ? item?.card?.card?.info?.name.slice(0, 20) + "..."
+          {item?.card?.card?.info?.name.length > 18
+            ? item?.card?.card?.info?.name.slice(0, 18) + "..."
             : item?.card?.card?.info?.name}
         </p>
         <div className="flex justify-between px-2  text-xl">

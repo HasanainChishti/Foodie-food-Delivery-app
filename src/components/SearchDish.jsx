@@ -77,7 +77,7 @@ const SearchDish = () => {
       // console.log("less than -300 yes", item?.card?.card?.info?.price / 100);
 
        setFilterData(
-        dish.filter(
+        filterData.filter(
           (item) =>  item?.card?.card?.info?.price/100 <= 300))
     }
     // setDish(filterData);
