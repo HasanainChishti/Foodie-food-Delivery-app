@@ -98,7 +98,7 @@ function handleOrder(user) {
       return (
               <div className='flex flex-col  mt-20 '>
                 <h1 className='text-2xl font-bold text-center'>Your Card is Empty</h1>
-                <button className='text-3xl font-bold text-center text-orange-600'>Click Me To Order Now</button>
+             
               </div>
              )
   return (
