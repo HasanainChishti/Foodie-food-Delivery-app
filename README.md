@@ -26,7 +26,7 @@ It features restaurant listings, detailed menus, cart functionality, and locatio
 ---
 
 ## 🔗 Live Demo
-👉 **Preview App:** [https://foodie-food-delivery-app.vercel.app](#)  
+👉 **Preview App:** [https://foodie-food-delivery-app.vercel.app](https://foodie-food-delivery-app.vercel.app)  
 👉 **GitHub Repo:** [https://github.com/HasanainChishti/Foodie-food-Delivery-app](https://github.com/HasanainChishti/Foodie-food-Delivery-app)
 
 ---
