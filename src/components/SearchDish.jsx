@@ -24,6 +24,8 @@ const SearchDish = () => {
   // console.log('lat',lat, 'lng',lng);
 
   useEffect(() => {
+    if(name==="Pure Veg")
+      name="veg";
     setInput(name);
   }, [name]); // console.log(name,"name");
 
@@ -98,7 +100,8 @@ const SearchDish = () => {
 //
     fetchDish(input);
   }, [lat, lng,input]);
-  console.log("dish data", dish);
+  console.log("dish data", dish,input);
+
   function getDish(search) {
     // if(search)
     // yaha pe jo bhi sidh he usme dish word add karna pdega agar nahi he to tabhi data aayega

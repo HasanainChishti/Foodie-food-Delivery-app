@@ -51,9 +51,9 @@ const Header = ({scrollToContact}) => {
               </Link>
               
               <Link to={`/Search/${search || "Biryani"}`}>
-                <p className="text-2xl font-semibold   py-1 flex items-center gap-1 hover:text-black transition">
+                <p className="text-2xl font-semibold border-1 rounded-xl p-1  py-1 flex items-center gap-1 hover:text-black transition">
                   <TfiSearch className="text-xl" />
-                  search
+                 Dish
                 </p>
               </Link>
               <button onClick={()=>{const section=document.getElementById('contact-section')
