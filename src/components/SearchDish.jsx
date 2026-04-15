@@ -6,6 +6,7 @@ import { latContext, lngContext } from "./ContextApi";
 import veg from "../iconImages/veg.png";
 import nonVeg from "../iconImages/nonVeg.png";
 import Footer from "./Footer";
+import Shimer from "./Shimer";
 const SearchDish = () => {
   let { name } = useParams();
   console.log(name,"dish");
@@ -54,6 +55,8 @@ const SearchDish = () => {
        
     setDish(fData);
     setFilterData(fData);
+    // console.log(filterData,"current ");
+    
     // console.log("all dish", dish);
   }
   function getFilterData(filter) {
@@ -109,10 +112,13 @@ const SearchDish = () => {
     
     fetchDish(search);
   }
+  if(filterData?.length === 0)
+    return  <Shimer />;
   // ⭐💰🥗
   return (
     <>
-      <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
+     {
+        filterData?  <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
         <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row gap-2 w-[100%] mb-10">
           {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map(
             (filter, i) => (
@@ -161,16 +167,20 @@ const SearchDish = () => {
             +
           </button>
         </div>
-      </div>
-     <div className="btn mt-0 pt-0 w-[80%]  flex justify-start mx-auto "><button className="shadow-md bg-green-400 px-2 p-2 rounded-full" 
-     onClick={()=>setFilterData(dish)}>ClearFilter</button></div>
+      </div>:""
+}
+    {
+     filterData?  <div className="btn mt-0 pt-0 w-[80%]  flex justify-start mx-auto "><button className="shadow-md bg-green-400 px-2 p-2 rounded-full" 
+     onClick={()=>setFilterData(dish)}>ClearFilter</button></div>:""
+    }
       <div
         className="w-[80%]  gap-0 mx-auto flex flex-row   md:flex-row  md:justify-between items-center align-middle mt-3 
       text-3xl font-bold "
       >
         {/* <h3 className="">Top dishesh near you</h3> */}
       </div>
-
+         {/* { */}
+    {/* //  filterData?      */}
       <div className="w-[75%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
         <div className="w-full  grid grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-20    pt-10">
           {filterData?.length
@@ -180,6 +190,10 @@ const SearchDish = () => {
             : null}
         </div>
       </div>
+      {/* // :<div className="mb-50 mt-30 flex items-center justify-center text-2xl font-bold text-orange-600">
+      //   <h1>Items is Unavailable</h1>
+      // </div> */}
+
       <Footer></Footer>
     </>
   );

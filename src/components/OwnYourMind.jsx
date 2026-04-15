@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router'
 const OwnYourMind = ({onMindData,handleSearchDish}) => {
 
-    let data1=onMindData.slice(0,(onMindData.length));
+    let data1=onMindData.filter((item,index)=>index>=4)
     let topDish=[];
      for(let i=0;i<8;i++)
      {
       let rand=Math.floor(Math.random()*(onMindData.length-1))
-        topDish.push(onMindData[rand]);
+        topDish.push(data1[rand]);
      }
+    
      console.log(topDish,"topD");
      
   // let data2=onMindData.slice((onMindData.length)/2,onMindData.length);
@@ -42,7 +43,7 @@ const OwnYourMind = ({onMindData,handleSearchDish}) => {
           <Link to={`/Search/${item?.action?.text}/`} key={index} >
 
             <div onClick={()=>handleSearchDish(item.action.text)} className="relative w-[220px] h-[240px] rounded-xl   bg-gray-300 hover:shadow-md text-amber-200 hover:border-amber-200 ">
-              <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/"+item.imageId}
+              <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/"+item?.imageId}
               className="w-[210px] h-[240px] object-cover p-1 " />
               {/* <h1 className="mt-3 text-lg font-semibold text-center">{item?.text}</h1> */}
               <span className='absolute top-2 left-2 text-2xl'>⭐</span>

@@ -18,6 +18,7 @@ import { TfiSearch } from "react-icons/tfi";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
 import { HomeFoodData } from "./utils/OwnYourMindData";
+import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   const [RestData, setRestData] = useState([]);
   const [onMindData, setOwnMindData] = useState([]);
@@ -79,7 +80,8 @@ const App = () => {
     <>
       <Provider store={store}>
         {/* <Provider store={store}> */}
-
+              
+              <ScrollToTop></ScrollToTop>
         <lngContext.Provider value={{ lng, setLng }}>
           <latContext.Provider value={{ lat, setLat }}>
             <Routes>
