@@ -15,8 +15,11 @@ const Header = ({scrollToContact}) => {
          const userData = useSelector((state) => state.authSlice.userData);
            const [select, setSelect] = useState(0);
            const [prof,setProf]=useState(0);
-            const cnt = useSelector((state) => state.cartSlice.items);
-            // console.log(cnt,"is here");
+            const totalItems = useSelector((state) => state.cartSlice.items);
+            let cnt=0;
+            for(let i=0;i<totalItems.length;i++)
+              cnt+=totalItems[i].quantity;
+            console.log(cnt,"is here");
             console.log(userData,"udata");
             
              
@@ -65,7 +68,7 @@ const Header = ({scrollToContact}) => {
               <Link to="/CartPage">
                 <button className="flex relative items-center gap-1 text-xl font-semibold hover:text-black transition">
                   <BsCart4 className="text-3xl " /> 
-                  {cnt!=0?<span className='absolute bottom-5 left-4  px-2 text-1/2 text-green-400  bg-white rounded-full'>{cnt.length}</span>:null}
+                  {cnt!=0?<span className='absolute bottom-5 left-4  px-2 text-sm text-green-400  bg-white rounded-full'>{cnt}</span>:null}
                 </button>
               </Link>
 

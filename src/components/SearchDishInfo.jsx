@@ -60,106 +60,187 @@ const SearchDishInfo = ({ item }) => {
   //     setCount(count-1);
   //     dispatch(DecrementItem(item));
   // }
-  return (
-    //  <Link to={"/DishDetail/"} state={{item}}>
-    <div className=" h-82 w-55 rounded-xl  flex  flex-col md:flex md:flex-col lg:flex lg:flex-col gap-6 transition-xl relative shadow-2xs bg-amber-50">
-     
-         <Link to={"/DishDetail/"} state={{item}}>
-      <div className="w-55 h-50">
+//   return (
+//     //  <Link to={"/DishDetail/"} state={{item}}>
+//     <div className=" h-82 w-full overflow-hidden max-w-[270px] shadow-sm rounded-xl  flex  flex-col md:flex md:flex-col lg:flex 
+//     lg:flex-col gap-6 transition-xl relative  hover:shadow-xl bg-white group">
+//      {/* className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden w-full max-w-[240px] mx-auto group */}
+//          <Link to={"/DishDetail/"} state={{item}}>
+//       <div className="relative">
+//         <img
+//           src={
+//             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/" +
+//             item?.card?.card?.info?.imageId
+//           }
+//           // w-full h-40 object-cover group-hover:scale-105 transition duration-300
+//         className="object-cover rounded-xl w-full h-50 group-hover:scale-105 transition duration-300 "
+//         />
+//       </div>
+
+//       <div className="flex h-16 flex-col text-2xl font-semibold p-2 gap-2 w-55  text-gray-800 ">
+//         {/* <p className={"w-5 h-5" item?.card?.card?.info?"veg":"" }></p> */}
+//         {item?.card?.card?.info.hasOwnProperty("isVeg") ? (
+//           <img src={veg} className="w-7 h-7 absolute top-1 left-2"></img>
+//         ) : (
+//           <img src={nonVeg} className="w-7 h-7 absolute top-1 left-2"></img>
+//         )}
+//         {/* <p>{item?.card?.card?.restaurant?.info?.name||"kkk"}</p> */}
+
+//         <p className="w-55 flex flex-nowrap text-xl">
+//           {item?.card?.card?.info?.name.length > 18
+//             ? item?.card?.card?.info?.name.slice(0, 18) + "..."
+//             : item?.card?.card?.info?.name}
+//         </p>
+//         <div className="flex justify-between px-2  text-xl">
+//           <p>⭐{item?.card?.card?.info?.ratings?.aggregatedRating?.rating}</p>
+//                     <p>₹{item?.card?.card?.info?.price / 100 || "kkk"}</p>
+//         </div>
+        
+// </div>
+// </Link>
+//   <div className="">
+//           {/* <p className="hover:text-3xl">₹{item?.card?.card?.info?.price / 100}</p> */}
+//           {/* {
+//                   count===0?(<button className="absolute  bottom-1 left-20 shadow-md border  rounded-xl 
+//          text-white px-4 py-2 bg-green-600 text-xl font-semibold text-center" onClick={()=>handleAddItem()}>Add to Cart</button>)
+//                  :(
+//        <div className='flex absolute  bottom-1 left-20 shadow-md border  rounded-xl 
+//                  text-white px-4 py-2 bg-green-600 text-xl font-semibold gap-3 items-center' >
+//         <button onClick={()=>dispatch(incrementItem(item?.card?.card?.info))} >+</button>
+//         <span>{count}</span>
+//         <button onClick={()=>dispatch(decrementItem(item?.card?.card?.info))} >-</button>
+//         </div>
+//   )
+//                 } */}
+//           {
+//             //   count===0?(<button className="absolute  bottom-1 left-20 shadow-md border  rounded-xl
+//             //                text-white px-4 py-2 bg-green-600 text-xl font-semibold" onClick={()=>handleAddItem()}>Add to Cart</button>):(
+//             //      <div className='flex absolute  bottom-1 left-20 shadow-md border  rounded-xl
+//             //                text-white px-4 py-2 bg-green-600 text-xl font-semibold gap-3' >
+//             //       <button onClick={()=>handleDecremetItem}>-</button>
+//             //       <span>{count}</span>
+//             //       <button onClick={()=>handleIncrementItem}>+</button>
+//             //       </div>
+//             // )
+//             // onClick={()=>dispatch(addItem())}
+//             count === 0 ? (
+//               <button
+//                 className="   shadow-md border  rounded-xl 
+//          text-white px-4 py-1 bg-green-500 text-xl font-semibold text-center"
+//                 onClick={() => handleAddItem()}
+//               >
+//                 Add to Cart
+//               </button>
+//             ) : (
+//               <div
+//                 className="flex  w-30 justify-center align-middle   shadow-md border  rounded-xl 
+//                  text-white px-4 py-2 bg-green-600 text-2xl font-semibold gap-3 items-center"
+//               >
+//                 <button
+//                   onClick={() =>
+//                     dispatch(incrementItem(item?.card?.card?.info))
+//                   }
+//                 >
+//                   +
+//                 </button>
+//                 <span>{count}</span>
+//                 <button
+//                   onClick={() =>
+//                     dispatch(decrementItem(item?.card?.card?.info))
+//                   }
+//                 >
+//                   -
+//                 </button>
+//               </div>
+//             )
+//           }
+      
+//       </div>
+      
+      
+//        {/* <Footer></Footer> */}
+//     </div>
+    
+//   );
+
+return (
+  <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden w-full max-w-[240px] mx-auto group">
+
+    <Link to={"/DishDetail/"} state={{ item }}>
+
+      {/* 🔥 IMAGE */}
+      <div className="relative">
         <img
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/" +
             item?.card?.card?.info?.imageId
           }
-          className="object-cover rounded-xl w-55 h-50 shadow-md "
+          className="w-full h-40 object-cover group-hover:scale-105 transition duration-300"
         />
+
+        {/* 🟢🔴 VEG/NONVEG BADGE */}
+        <div className="absolute top-2 left-2 bg-white px-2 py-0.5 rounded shadow text-xs">
+          {item?.card?.card?.info?.hasOwnProperty("isVeg") ? "🟢 Veg" : "🔴 Non-Veg"}
+        </div>
       </div>
 
-      <div className="flex h-16 flex-col text-2xl font-semibold p-2 gap-2 w-55  text-gray-800 ">
-        {/* <p className={"w-5 h-5" item?.card?.card?.info?"veg":"" }></p> */}
-        {item?.card?.card?.info.hasOwnProperty("isVeg") ? (
-          <img src={veg} className="w-7 h-7 absolute top-1 left-2"></img>
-        ) : (
-          <img src={nonVeg} className="w-7 h-7 absolute top-1 left-2"></img>
-        )}
-        {/* <p>{item?.card?.card?.restaurant?.info?.name||"kkk"}</p> */}
+      {/* 🔥 CONTENT */}
+      <div className="p-3">
 
-        <p className="w-55 flex flex-nowrap text-xl">
-          {item?.card?.card?.info?.name.length > 18
-            ? item?.card?.card?.info?.name.slice(0, 18) + "..."
-            : item?.card?.card?.info?.name}
+        {/* 🍽️ NAME */}
+        <h3 className="text-base font-semibold text-gray-800 line-clamp-1">
+          {item?.card?.card?.info?.name}
+        </h3>
+
+        {/* ⭐ RATING */}
+        <p className="text-sm text-gray-500 mt-1">
+          ⭐ {item?.card?.card?.info?.ratings?.aggregatedRating?.rating || "4.0"}
         </p>
-        <div className="flex justify-between px-2  text-xl">
-          <p>⭐{item?.card?.card?.info?.ratings?.aggregatedRating?.rating}</p>
-                    <p>₹{item?.card?.card?.info?.price / 100 || "kkk"}</p>
+
+        {/* 💰 PRICE */}
+        <div className="flex justify-between items-center mt-2">
+          <span className="font-bold text-lg text-gray-800">
+            ₹{item?.card?.card?.info?.price / 100 || 0}
+          </span>
         </div>
-        
-</div>
-</Link>
-  <div className="">
-          {/* <p className="hover:text-3xl">₹{item?.card?.card?.info?.price / 100}</p> */}
-          {/* {
-                  count===0?(<button className="absolute  bottom-1 left-20 shadow-md border  rounded-xl 
-         text-white px-4 py-2 bg-green-600 text-xl font-semibold text-center" onClick={()=>handleAddItem()}>Add to Cart</button>)
-                 :(
-       <div className='flex absolute  bottom-1 left-20 shadow-md border  rounded-xl 
-                 text-white px-4 py-2 bg-green-600 text-xl font-semibold gap-3 items-center' >
-        <button onClick={()=>dispatch(incrementItem(item?.card?.card?.info))} >+</button>
-        <span>{count}</span>
-        <button onClick={()=>dispatch(decrementItem(item?.card?.card?.info))} >-</button>
-        </div>
-  )
-                } */}
-          {
-            //   count===0?(<button className="absolute  bottom-1 left-20 shadow-md border  rounded-xl
-            //                text-white px-4 py-2 bg-green-600 text-xl font-semibold" onClick={()=>handleAddItem()}>Add to Cart</button>):(
-            //      <div className='flex absolute  bottom-1 left-20 shadow-md border  rounded-xl
-            //                text-white px-4 py-2 bg-green-600 text-xl font-semibold gap-3' >
-            //       <button onClick={()=>handleDecremetItem}>-</button>
-            //       <span>{count}</span>
-            //       <button onClick={()=>handleIncrementItem}>+</button>
-            //       </div>
-            // )
-            // onClick={()=>dispatch(addItem())}
-            count === 0 ? (
-              <button
-                className="   shadow-md border  rounded-xl 
-         text-white px-4 py-1 bg-green-500 text-xl font-semibold text-center"
-                onClick={() => handleAddItem()}
-              >
-                Add to Cart
-              </button>
-            ) : (
-              <div
-                className="flex  w-30 justify-center align-middle   shadow-md border  rounded-xl 
-                 text-white px-4 py-2 bg-green-600 text-2xl font-semibold gap-3 items-center"
-              >
-                <button
-                  onClick={() =>
-                    dispatch(incrementItem(item?.card?.card?.info))
-                  }
-                >
-                  +
-                </button>
-                <span>{count}</span>
-                <button
-                  onClick={() =>
-                    dispatch(decrementItem(item?.card?.card?.info))
-                  }
-                >
-                  -
-                </button>
-              </div>
-            )
-          }
-      
       </div>
-      
-      
-       {/* <Footer></Footer> */}
+    </Link>
+
+    {/* 🛒 ADD TO CART */}
+    <div className="px-3 pb-3 flex items-center justify-center">
+
+      {count === 0 ? (
+        <button
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-1.5 rounded-lg text-sm font-semibold transition"
+          onClick={() => handleAddItem()}
+        >
+          Add
+        </button>
+      ) : (
+        <div className="flex justify-between items-center align-middle bg-green-600 w-30 text-white rounded-lg px-3 py-1.5 text-mono font-semibold">
+          <button
+            onClick={() =>
+              dispatch(decrementItem(item?.card?.card?.info))
+            }
+          >
+            -
+          </button>
+
+          <span>{count}</span>
+
+          <button
+            onClick={() =>
+              dispatch(incrementItem(item?.card?.card?.info))
+            }
+          >
+            +
+          </button>
+        </div>
+      )}
+
     </div>
-    
-  );
+  </div>
+);
 };
 
 export default SearchDishInfo;

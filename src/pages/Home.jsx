@@ -60,7 +60,7 @@ export default function Home({ RestData, onMindData }) {
 
   return (
     <div  
-    className={`w-full min-h-screen bg-white  `}>
+    className={`w-full min-h-screen bg-white/45  `}>
       
 
        {/* <Header></Header> */}
