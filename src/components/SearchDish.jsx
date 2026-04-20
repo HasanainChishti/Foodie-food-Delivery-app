@@ -53,52 +53,55 @@ const SearchDish = () => {
 
     const fData = dishData?.filter((card) => card?.card?.card.info);
        
-    setDish(fData);
-    setFilterData(fData);
-     setFilterData(fData.slice(0,32));
+    setDish(fData?.slice(0,32));
+    // setFilterData(fData);
+     setFilterData(fData?.slice(0,32));
     console.log(filterData,"current ");
     
     // console.log("all dish", dish);
   }
   function getFilterData(filter) {
     console.log("filter", dish);
-    // let filterData;
+    let data;
     if (filter === "veg") {
       console.log("veg yes");
-      setFilterData(filterData.filter((item) => item?.card?.card?.info?.isVeg));
-    } else if (filter === "non-veg") {
-      console.log("nonveg yes");
-      setFilterData(filterData.filter((item) => !item?.card?.card?.info?.isVeg));
-    } else if (filter === "₹300 - ₹800") {
+      setFilterData(dish?.filter((item) => item?.card?.card?.info?.isVeg));
+    } 
+    else if (filter === "non-veg") {
+      console.log("non veg yes");
+      setFilterData(dish.filter((item) => !item?.card?.card?.info?.isVeg));
+    }
+     else if (filter === "₹300 - ₹800") {
       // (item?.card?.card?.info?.price/100)<=100)
       // console.log("300- 600 yes");
       setFilterData(
-        filterData.filter(
+        dish.filter(
           (item) =>
             item?.card?.card?.info?.price/100 >300 &&
             item?.card?.card?.info?.price/100 <= 800
         )
       );
-    } else if (filter === "Less than ₹300") {
+    }
+     else if (filter === "Less than ₹300") {
       // console.log("less than -300 yes", item?.card?.card?.info?.price / 100);
 
        setFilterData(
-        filterData.filter(
+        dish.filter(
           (item) =>  item?.card?.card?.info?.price/100 <= 300))
     }
      else if(filter==="Ratings")
      {
-     const sorted=[...filterData].sort((a,b)=>b.card?.card?.info?.ratings?.aggregatedRating.rating-a.card?.card?.info?.ratings?.aggregatedRating.rating);
+     const sorted=[...dish].sort((a,b)=>b.card?.card?.info?.ratings?.aggregatedRating.rating-a.card?.card?.info?.ratings?.aggregatedRating.rating);
     setFilterData(sorted)
     //  console.log(filterData,"sort data");
      
      } 
      else if(filter==="low to high")
      {
-      const sorted=[...filterData].sort((a,b)=>a.card?.card?.info?.price-b.card?.card?.info?.price);
+      const sorted=[...dish].sort((a,b)=>a.card?.card?.info?.price-b.card?.card?.info?.price);
     setFilterData(sorted)
      }
-        setFilterData(sorted.slice(0,40));
+        // setFilterData(sorted.slice(0,40));
  
   }
 
@@ -191,7 +194,11 @@ const SearchDish = () => {
     {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map((item) => (
       <button
         key={item}
-        onClick={()=>setActive(item)}
+        onClick={()=>
+          // setActive(item),
+          getFilterData(item)
+        }
+        // onClick
         className={`px-4 py-1 rounded-full text-sm whitespace-nowrap 
           ${
           active === item
