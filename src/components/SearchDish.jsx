@@ -9,8 +9,8 @@ import Footer from "./Footer";
 import Shimer from "./Shimer";
 const SearchDish = () => {
   let { name } = useParams();
-  console.log(name,"dish");
-  
+  console.log(name, "dish");
+
   const [dish, setDish] = useState([]);
   const [filterData, setFilterData] = useState([]);
   // console.log("dish name in search page", searchDish);
@@ -25,11 +25,10 @@ const SearchDish = () => {
   // console.log('lat',lat, 'lng',lng);
 
   useEffect(() => {
-    if(name==="Pure Veg")
-      name="veg";
+    if (name === "Pure Veg") name = "veg";
     setInput(name);
   }, [name]); // console.log(name,"name");
- const [active,setActive] = useState('')
+  const [active, setActive] = useState("");
   //to many re renders error
   //  if(name!=undefined)
   //   setInput(name)
@@ -37,10 +36,11 @@ const SearchDish = () => {
   // console.log("item is", name);
 
   async function fetchDish(itemName) {
-    console.log("fetch ", lat, lng);
+    // console.log("fetch ", lat, lng);
+console.log(itemName,"yesno");
 
     const res = await fetch(
-      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${itemName}&trackingId=48761fc8-9fe0-4d35-684d-41bb95bb5d83&submitAction=ENTER&queryUniqueId=e96aad3b-033c-b898-bf98-b715cc8223d0`
+      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${itemName}&trackingId=48761fc8-9fe0-4d35-684d-41bb95bb5d83&submitAction=ENTER&queryUniqueId=e96aad3b-033c-b898-bf98-b715cc8223d0`,
     );
     const data = await res.json();
     // console.log("data",data);
@@ -52,12 +52,12 @@ const SearchDish = () => {
     // console.log("dishdata", RestdishData);
 
     const fData = dishData?.filter((card) => card?.card?.card.info);
-       
-    setDish(fData?.slice(0,32));
+
+    setDish(fData?.slice(0, 32));
     // setFilterData(fData);
-     setFilterData(fData?.slice(0,32));
-    console.log(filterData,"current ");
-    
+    setFilterData(fData?.slice(0, 32));
+    console.log(filterData, "current ");
+
     // console.log("all dish", dish);
   }
   function getFilterData(filter) {
@@ -66,154 +66,157 @@ const SearchDish = () => {
     if (filter === "veg") {
       console.log("veg yes");
       setFilterData(dish?.filter((item) => item?.card?.card?.info?.isVeg));
-    } 
-    else if (filter === "non-veg") {
+    } else if (filter === "non-veg") {
       console.log("non veg yes");
       setFilterData(dish.filter((item) => !item?.card?.card?.info?.isVeg));
-    }
-     else if (filter === "₹300 - ₹800") {
+    } else if (filter === "₹300 - ₹800") {
       // (item?.card?.card?.info?.price/100)<=100)
       // console.log("300- 600 yes");
       setFilterData(
         dish.filter(
           (item) =>
-            item?.card?.card?.info?.price/100 >300 &&
-            item?.card?.card?.info?.price/100 <= 800
-        )
+            item?.card?.card?.info?.price / 100 > 300 &&
+            item?.card?.card?.info?.price / 100 <= 800,
+        ),
       );
-    }
-     else if (filter === "Less than ₹300") {
+    } else if (filter === "Less than ₹300") {
       // console.log("less than -300 yes", item?.card?.card?.info?.price / 100);
 
-       setFilterData(
-        dish.filter(
-          (item) =>  item?.card?.card?.info?.price/100 <= 300))
+      setFilterData(
+        dish.filter((item) => item?.card?.card?.info?.price / 100 <= 300),
+      );
+    } else if (filter === "Ratings") {
+      const sorted = [...dish].sort(
+        (a, b) =>
+          b.card?.card?.info?.ratings?.aggregatedRating.rating -
+          a.card?.card?.info?.ratings?.aggregatedRating.rating,
+      );
+      setFilterData(sorted);
+      //  console.log(filterData,"sort data");
+    } else if (filter === "low to high") {
+      const sorted = [...dish].sort(
+        (a, b) => a.card?.card?.info?.price - b.card?.card?.info?.price,
+      );
+      setFilterData(sorted);
     }
-     else if(filter==="Ratings")
-     {
-     const sorted=[...dish].sort((a,b)=>b.card?.card?.info?.ratings?.aggregatedRating.rating-a.card?.card?.info?.ratings?.aggregatedRating.rating);
-    setFilterData(sorted)
-    //  console.log(filterData,"sort data");
-     
-     } 
-     else if(filter==="low to high")
-     {
-      const sorted=[...dish].sort((a,b)=>a.card?.card?.info?.price-b.card?.card?.info?.price);
-    setFilterData(sorted)
-     }
-        // setFilterData(sorted.slice(0,40));
- 
+    // setFilterData(sorted.slice(0,40));
   }
 
   useEffect(() => {
-    console.log("effect func",input);
-//
+    console.log("effect func", input);
+    //
     fetchDish(input);
   }, [lat, lng,input]);
-  console.log("dish data", dish,input);
+  console.log("dish data", dish);
 
   function getDish(search) {
     // if(search)
     // yaha pe jo bhi sidh he usme dish word add karna pdega agar nahi he to tabhi data aayega
-    console.log('yes called',search);
-    
+    console.log("yes called", search);
+
     fetchDish(search);
   }
-  if(filterData?.length === 0)
-    return  <Shimer />;
+  function handleInput(e){
+          console.log("key che... ",e.key);
+          setSearch(e.target.value)
+  }
+  function handleKey(e){
+      if(e.key === "Enter")
+        fetchDish(search);
+  }
+  if (filterData?.length === 0) return <Shimer />;
   // ⭐💰🥗
   return (
     <div className="bg-gray-50">
-     {
-      //   filterData?  <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
-      //   <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row gap-2 w-[100%] mb-10">
-      //     {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map(
-      //       (filter, i) => (
-      //         <button
-      //           key={i}
-      //           // from-orange-500 to-orange-300
-      //           onClick={() => getFilterData(filter)}
-      //           className=" w-auto py-2 px-4 rounded-full font-semibold text-lg shadow-md bg-gradient-to-r from-orange-200 to-orange-400  text-black hover:scale-105 hover:shadow-xl transition"
-      //         >
-      //           {filter == "veg" ? (
-      //             <div className="flex">
-      //                <img src={veg} className="w-7 h-7 "></img>
-      //                 veg
-                   
-                   
-      //             </div>
-      //           ) : filter == "non-veg" ? (
-      //             <div className="flex">
-                    
-      //                 <img src={nonVeg} className="w-7 h-7 "></img>
-      //                 nonVeg
-      //             </div>
-      //           ) : (
-      //             <div>
-      //               {/* <span className="w-2 h-2 bg-green-600"></span> */}
-      //               {/* <span>{filter}</span> */}
-      //               {filter}
-      //             </div>
-      //           )}
-      //         </button>
-      //       )
-      //     )}
-      //   </div>
-      //   <div className="search relative flex w-[270px] sm:w-[290px] md:w-[320px] lg:w-[360px] h-[60px] ">
-      //     <input
-      //       type="text"
-      //       placeholder="Search Dish..."
-      //       className=" flex  shadow-2xl border-2 w-[250px] sm:w-[250px] md:w-[300px] h-[50px]   text-black text-xl  rounded-xl "
-      //       onChange={(e) => setSearch(e.target.value)}
-      //       value={search}
-      //     />
-      //     <button
-      //       onClick={() => setInput(search)}
-      //       className="sm:absolute  sm:right-0 place-items-center bg-none text-orange-400 shadow-md rounded-xl h-[46px] text-3xl w-[50px]"
-      //     >
-      //       +
-      //     </button>
-      //   </div>
-      // </div>:""
-      <div className=" w-[80%] mx-auto flex flex-col justify-center align-middle   p-4 sticky top-0 z-50 ">
-  
-  {/* Search */}
-  <div className="mb-3">
-    <div className="flex items-center bg-white shadow-md rounded-full px-4 py-2">
-      🔍
-      <input
-        type="text"
-        placeholder="Search food..."
-        className="w-full ml-2 outline-none"
-      />
-    </div>
-  </div>
+      {
+        //   filterData?  <div className=" w-[80%] flex  flex-col md:flex-row md:mx-auto lg:flex-row lg:gap-2 lg:mx-auto  mt-30   ">
+        //   <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row gap-2 w-[100%] mb-10">
+        //     {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map(
+        //       (filter, i) => (
+        //         <button
+        //           key={i}
+        //           // from-orange-500 to-orange-300
+        //           onClick={() => getFilterData(filter)}
+        //           className=" w-auto py-2 px-4 rounded-full font-semibold text-lg shadow-md bg-gradient-to-r from-orange-200 to-orange-400  text-black hover:scale-105 hover:shadow-xl transition"
+        //         >
+        //           {filter == "veg" ? (
+        //             <div className="flex">
+        //                <img src={veg} className="w-7 h-7 "></img>
+        //                 veg
 
-  {/* Filters */}
-  <div className="flex gap-3 overflow-x-auto">
-    {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map((item) => (
-      <button
-        key={item}
-        onClick={()=>
-          // setActive(item),
-          getFilterData(item)
-        }
-        // onClick
-        className={`px-4 py-1 rounded-full text-sm whitespace-nowrap 
-          ${
-          active === item
-            ? "bg-orange-500 text-white"
-            : "bg-gray-200"
-        }
+        //             </div>
+        //           ) : filter == "non-veg" ? (
+        //             <div className="flex">
+
+        //                 <img src={nonVeg} className="w-7 h-7 "></img>
+        //                 nonVeg
+        //             </div>
+        //           ) : (
+        //             <div>
+        //               {/* <span className="w-2 h-2 bg-green-600"></span> */}
+        //               {/* <span>{filter}</span> */}
+        //               {filter}
+        //             </div>
+        //           )}
+        //         </button>
+        //       )
+        //     )}
+        //   </div>
+        //   <div className="search relative flex w-[270px] sm:w-[290px] md:w-[320px] lg:w-[360px] h-[60px] ">
+        //     <input
+        //       type="text"
+        //       placeholder="Search Dish..."
+        //       className=" flex  shadow-2xl border-2 w-[250px] sm:w-[250px] md:w-[300px] h-[50px]   text-black text-xl  rounded-xl "
+        //       onChange={(e) => setSearch(e.target.value)}
+        //       value={search}
+        //     />
+        //     <button
+        //       onClick={() => setInput(search)}
+        //       className="sm:absolute  sm:right-0 place-items-center bg-none text-orange-400 shadow-md rounded-xl h-[46px] text-3xl w-[50px]"
+        //     >
+        //       +
+        //     </button>
+        //   </div>
+        // </div>:""
+        <div className=" w-[80%] mx-auto flex flex-col justify-center align-middle   p-4  ">
+          {/* Search */}
+          <div className="mb-3">
+            <div className="flex items-center bg-white shadow-md rounded-full px-4 py-2">
+              🔍
+              <input
+                type="text"
+                placeholder="Search food..."
+                className="w-full ml-2 outline-none"
+                onChange={(e) => handleInput(e)}
+                onKeyDown={(e)=>handleKey(e)}
+                value={search}
+              />
+            </div>
+          </div>
+
+          {/* Filters */}
+          <div className="flex gap-3 overflow-x-auto">
+            {[`veg`, `non-veg`, "Ratings", "low to high", "Less than ₹300"].map(
+              (item) => (
+                <button
+                  key={item}
+                  onClick={() =>
+                    // setActive(item),
+                    getFilterData(item)
+                  }
+                  // onClick
+                  className={`px-4 py-1 rounded-full text-sm whitespace-nowrap 
+          ${active === item ? "bg-orange-500 text-white" : "bg-gray-200"}
         `}
-      >
-        {item}
-      </button>
-    ))}
-  </div>
-</div>
-}
-    {/* {
+                >
+                  {item}
+                </button>
+              ),
+            )}
+          </div>
+        </div>
+      }
+      {/* {
      filterData?  <div className="btn mt-0 pt-0 w-[80%]  flex justify-start mx-auto "><button className="shadow-md bg-green-400 px-2 p-2 rounded-full" 
      onClick={()=>setFilterData(dish)}>ClearFilter</button></div>:""
     } */}
@@ -223,8 +226,8 @@ const SearchDish = () => {
       >
         {/* <h3 className="">Top dishesh near you</h3> */}
       </div>
-         {/* { */}
-    {/* //  filterData?      */}
+      {/* { */}
+      {/* //  filterData?      */}
       <div className="w-[75%] p-2 flex flex-col mx-auto  items-center justify-center align-middle rounded-2xl">
         <div className="w-full  grid grid-cols-1 sm:grid-cols-2 sm:gap-12 md:grid-cols-3  md:gap-20 lg:grid-cols-4 lg:gap-10 ">
           {filterData?.length
