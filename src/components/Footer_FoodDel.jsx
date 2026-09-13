@@ -95,7 +95,7 @@ const Footer_FoodDel = () => {
                 />
 
                 <p className="text-sm leading-6 text-neutral-400">
-                  Your Restaurant Address,
+                 Near J.B. Shah English MEdium School,
                   <br />
                   Ahmedabad, Gujarat
                 </p>
@@ -114,7 +114,7 @@ const Footer_FoodDel = () => {
                 className="flex items-center gap-3 text-sm text-neutral-400 transition-colors duration-300 hover:text-white"
               >
                 <Mail size={18} className="text-[#F59E0B]" />
-                hello@restaurant.com
+                hello@Zayka.com
               </a>
 
             </div>
