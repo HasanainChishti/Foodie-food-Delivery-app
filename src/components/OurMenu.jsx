@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Stored/CartSlice";
 import MenuCard from "./MenuCard";
 import BiryaniImage from "../utils/Images/BiryaniImage.png"
 import dishImages from "../utils/Images/disheshImages";
+import { addItem } from "../Stored/CartSlicer";
+import { addToCart } from "../Stored/cartSlice";
 
 const OurMenu = () => {
  const categories = [
