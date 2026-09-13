@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuCard from "./MenuCard";
 import BiryaniImage from "../utils/Images/BiryaniImage.png"
 import dishImages from "../utils/Images/disheshImages";
-import { addToCart } from "../Stored/cartSlice";
+import { addToCart } from "../Stored/CartSlice";
 
 const OurMenu = () => {
  const categories = [
