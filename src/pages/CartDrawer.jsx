@@ -36,7 +36,7 @@
 // export default CartDrawer;
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
-import { removeFromCart } from "../Stored/CartSlice";
+import { removeFromCart } from "../Stored/cartSlice";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const cartItems = useSelector((state) => state.cart.items);
