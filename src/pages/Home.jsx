@@ -14,14 +14,43 @@ import Footer from "../components/Footer";
 import SearchDish from "../components/SearchDish";
 import Contact from "../components/Contact";
 import WhyUs from "../components/WhyUs";
+import SignatureDishesh from "../components/SignatureDishesh";
+import OurMenu from "../components/OurMenu";
 import { useRef } from "react";
-export default function Home({ RestData, onMindData }) {
+import dishImages from "../utils/Images/disheshImages";
+import About from "../components/About";
+import Gallery from "../components/Gallery";
+import Reviews from "../components/Reviews";
+import Location from "../components/Location";
+import FinalCTA from "../components/FinalCTA";
+import Footer_FoodDel from "../components/Footer_FoodDel";
+export default function Home({ setIsCartOpen }) {
   const [search, setSearch] = useState("");
   const [enter, setEnter] = useState(false);
   const [theme,setTheme]=useState('light');
 
-  const [searchDish,setSearchDish]=useState((onMindData?(onMindData[0]?.action?.text):null)||'Biryani')
-  const logo=['F','o','o','d','i','e'];
+  // const [searchDish,setSearchDish]=useState((onMindData?(onMindData[0]?.action?.text):null)||'Biryani')
+  const signatureDishes = [
+  {
+    name: "Chicken Biryani",
+    price: 299,
+    description: "Fragrant basmati rice, tender chicken and aromatic spices.",
+    image: dishImages.BiryaniImage,
+  },
+  {
+    name: "Mutton Biryani",
+    price: 349,
+    description: "Slow-cooked mutton with rich spices and fragrant rice.",
+    image: dishImages.MuttonBiryani,
+  },
+  {
+    name: "Paneer Biryani",
+    price: 249,
+    description: "Aromatic basmati rice with tender paneer and herbs.",
+    image:dishImages.paneerbiryani,
+  },
+];
+  // const logo=['F','o','o','d','i','e'];
    function handleSearchDish(name)
    {
     console.log('at handle',name);
@@ -29,15 +58,15 @@ export default function Home({ RestData, onMindData }) {
        setSearchDish(name);
    }
 
-   useEffect(()=>{
-    if(onMindData)
-       setSearchDish(onMindData[0]?.action?.text)
-   },[onMindData])
+  //  useEffect(()=>{
+  //   if(onMindData)
+  //      setSearchDish(onMindData[0]?.action?.text)
+  //  },[onMindData])
   //  const [dish, setDish] = useState([]);
-  const cartItems = useSelector((state) => state.cartSlice.items);
-  const userData = useSelector((state) => state.authSlice.userData);
+  // const cartItems = useSelector((state) => state.cartSlice.items);
+  // const userData = useSelector((state) => state.authSlice.userData);
 
-  console.log(searchDish,"dish name");
+  // console.log(searchDish,"dish name");
   
    function setLoc(value)
    {
@@ -52,9 +81,9 @@ export default function Home({ RestData, onMindData }) {
        menuRef.current?.scrollIntoView({ behavior: "smooth" });
      };
   
-  if (RestData?.length === 0) {
-    return <Shimer />;
-  }
+  // if (RestData?.length === 0) {
+  //   return <Shimer />;
+  // }
   // console.log("rest Data is",RestData);
   
 
@@ -63,10 +92,18 @@ export default function Home({ RestData, onMindData }) {
     className={`w-full min-h-screen bg-white/45  `}>
       
 
-       {/* <Header></Header> */}
+       <Header setIsCartOpen={setIsCartOpen}></Header>
       {/* Own Your Mind Section */}
       <Hero scrollToMenu={scrollToMenu}></Hero>
-      {onMindData && (
+      <SignatureDishesh signatureDishes={signatureDishes}></SignatureDishesh>
+      <OurMenu></OurMenu>
+      <About></About>
+      <Gallery></Gallery>
+      <Reviews></Reviews>
+      <Location></Location>
+      <FinalCTA></FinalCTA>
+      <Footer_FoodDel></Footer_FoodDel>
+      {/* {onMindData && (
         <div  id="dish-section" className="mt-10  " ref={menuRef}  >
           
           <OwnYourMind onMindData={onMindData} handleSearchDish={handleSearchDish} />
@@ -74,7 +111,8 @@ export default function Home({ RestData, onMindData }) {
          
         </div>
 
-      )}
+      )} */}
+
      {/* <SearchDish searchDish={searchDish}></SearchDish> */}
       {/* Restaurant List */}
       {/* <div id="rest-section"  className="mt-16 px-4 lg:px-20 flex flex-col items-center">
@@ -103,9 +141,9 @@ export default function Home({ RestData, onMindData }) {
           ))}
         </div>
       </div> */}
-     <WhyUs></WhyUs>
-      <Contact></Contact>
-    <Footer></Footer>
+     {/* <WhyUs></WhyUs>
+      <Contact></Contact> */}
+    {/* <Footer></Footer> */}
     </div>
 
   );

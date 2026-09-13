@@ -20,8 +20,8 @@ const SearchDish = () => {
   const [cnt, setCnt] = useState(0);
   const { lat } = useContext(latContext);
   const { lng } = useContext(lngContext);
-  console.log("this is input", input);
-  console.log("lat & lng ", lat, lng);
+  // console.log("this is input", input);
+  // console.log("lat & lng ", lat, lng);
   // console.log('lat',lat, 'lng',lng);
 
   useEffect(() => {
@@ -36,14 +36,16 @@ const SearchDish = () => {
   // console.log("item is", name);
 
   async function fetchDish(itemName) {
-    // console.log("fetch ", lat, lng);
+    console.log("fetch ", lat, lng);
 console.log(itemName,"yesno");
 
     const res = await fetch(
-      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${itemName}&trackingId=48761fc8-9fe0-4d35-684d-41bb95bb5d83&submitAction=ENTER&queryUniqueId=e96aad3b-033c-b898-bf98-b715cc8223d0`,
+      `https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/restaurants/search/v3?lat=19.076&lng=72.8777&str=biryani&trackingId=48761fc8-9fe0-4d35-684d-41bb95bb5d83&submitAction=ENTER&queryUniqueId=e96aad3b-033c-b898-bf98-b715cc8223d0`,
     );
+    console.log("res is here",res);
+    
     const data = await res.json();
-    // console.log("data",data);
+    console.log("data is current",data);
 
     const dishData =
       data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards;

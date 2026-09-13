@@ -6,7 +6,7 @@ const OwnYourMind = ({onMindData,handleSearchDish}) => {
     let topDish=[];
      for(let i=0;i<8;i++)
      {
-      let rand=Math.floor(Math.random()*(onMindData.length-1))
+      let rand=Math.floor(Math.random()*(data1.length))
         topDish.push(data1[rand]);
      }
     
